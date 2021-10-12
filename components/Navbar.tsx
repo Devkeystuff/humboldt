@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-export default function Navbar() {
+type NavbarProps = {};
+
+export const Navbar: React.FC = (props: NavbarProps) => {
   return (
     <nav>
       {/* TODO: Logo */}
@@ -18,4 +20,4 @@ export default function Navbar() {
       </ul>
     </nav>
   );
-}
+};
