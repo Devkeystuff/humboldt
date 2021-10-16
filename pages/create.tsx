@@ -1,17 +1,27 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 
 import Map from "../components/Map";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Dispatcher, DispatcherEvents } from "../globals/Dispatcher";
+import { Button } from "../components/styled/Button.styled";
+import { LatLngBounds } from "leaflet";
 
 const Create: NextPage = () => {
-  const [isSelect, setIsSelect] = useState(false);
+  const [selectedBounds, setSelectedBounds] = useState<LatLngBounds>();
+
+  useEffect(() => {
+    console.log("selected bounds", selectedBounds);
+  }, [selectedBounds]);
+  const confirm = () => {};
+
   return (
     <div>
-      <Map />
-      <button onClick={() => setIsSelect(!isSelect)}>Select</button>
+      <div>
+        <Map setSelectedBounds={setSelectedBounds} />
+        <Button onClick={() => Dispatcher.emit(DispatcherEvents.SELECT_BOUNDS)}>
+          Select
+        </Button>
+      </div>
     </div>
   );
 };

@@ -1,105 +1,36 @@
-import React, {
-  MutableRefObject,
-  Ref,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Rectangle,
-  useMap,
-  LayerGroup,
-  Marker,
-  Circle,
-  CircleProps,
-} from "react-leaflet";
-import L, { circle, LatLng, LatLngBounds, Layer, point } from "leaflet";
-import styled from "styled-components";
-import Router from "next/router";
+import React, { useEffect, useState } from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { geolocated, GeolocatedProps } from "react-geolocated";
-
-const RADIUS = 1000;
+import { LayerAreaSelect } from "./LayerAreaSelect";
+import { LatLng, LatLngBounds } from "leaflet";
+import { Dispatcher, DispatcherEvents } from "../globals/Dispatcher";
 
 interface IMapProps {
-  geolocated: GeolocatedProps;
+  setSelectedBounds: (bounds: LatLngBounds) => void;
 }
 
-interface IAreaSelectProps {
-  lat: number;
-  lng: number;
-}
-
-const markerCenter = new L.Icon({
-  iconUrl: "marker-center.png",
-  iconAnchor: [12.5, 12.5],
-  iconSize: [25, 25],
-});
-
-const AreaSelect = (props: IAreaSelectProps) => {
-  const circleRef: Ref<L.Circle<any>> = useRef<L.Circle<any>>(null);
-
-  const [center, setCenter] = useState<LatLng>(
-    new LatLng(props.lat, props.lng)
-  );
-  const [bounds, setBounds] = useState<LatLngBounds>(
-    new LatLngBounds(new LatLng(0, 0), new LatLng(0, 0))
-  );
+const Map: React.FC<IMapProps & GeolocatedProps> = (
+  props: IMapProps & GeolocatedProps
+) => {
+  const [bounds, setBounds] = useState<LatLngBounds>();
 
   useEffect(() => {
-    const newBounds = circleRef.current?.getBounds();
-    newBounds && setBounds(newBounds);
-  }, [center]);
-
-  const confirmSelect = (w: number, n: number, e: number, s: number) => {
-    console.log("sent request");
-
-    var requestOptions: RequestInit = {
-      method: "GET",
-      mode: "no-cors",
+    Dispatcher.addListener(DispatcherEvents.SELECT_BOUNDS, () => {
+      console.log("update bounds", bounds);
+      props.setSelectedBounds(bounds);
+    });
+    return () => {
+      Dispatcher.removeListener(
+        DispatcherEvents.SELECT_BOUNDS,
+        props.setSelectedBounds
+      );
     };
+  }, []);
 
-    fetch(
-      `https://portal.opentopography.org/API/globaldem?demtype=SRTMGL3&south=${s}&north=${n}&west=${w}&east=${e}`,
-      requestOptions
-    )
-      .then((response) => response.arrayBuffer())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+  const onNewBounds = (bounds: LatLngBounds) => {
+    setBounds(bounds);
   };
 
-  return (
-    <LayerGroup>
-      <Marker
-        draggable
-        icon={markerCenter}
-        position={center}
-        eventHandlers={{
-          drag: (e: any) => {
-            setCenter(new LatLng(e.latlng.lat, e.latlng.lng));
-          },
-        }}
-      />
-
-      <Rectangle
-        bounds={bounds}
-        pathOptions={{
-          weight: 3,
-          color: "#AAD725",
-        }}
-      />
-      <Circle
-        pathOptions={{ opacity: 0, fillOpacity: 0 }}
-        center={center}
-        radius={RADIUS}
-        ref={circleRef}
-      />
-    </LayerGroup>
-  );
-};
-
-const Map = (props: GeolocatedProps) => {
   return !props.isGeolocationAvailable ? (
     <div>Geolocation not available</div>
   ) : !props.isGeolocationEnabled ? (
@@ -107,7 +38,7 @@ const Map = (props: GeolocatedProps) => {
   ) : props.coords ? (
     <MapContainer
       selectArea
-      center={[51.505, -0.09]}
+      center={[props.coords.latitude, props.coords.longitude]}
       style={{
         width: "80vw",
         height: "50vh",
@@ -124,7 +55,10 @@ const Map = (props: GeolocatedProps) => {
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
       />
-      <AreaSelect lat={props.coords.latitude} lng={props.coords.longitude} />
+      <LayerAreaSelect
+        center0={new LatLng(props.coords.latitude, props.coords.longitude)}
+        onNewBounds={onNewBounds}
+      />
     </MapContainer>
   ) : (
     <div>Getting location</div>
