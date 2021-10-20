@@ -1,37 +1,29 @@
-import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType, NextPage } from "next";
-import { useRouter } from "next/dist/client/router";
+import { GetServerSideProps, NextPage } from "next";
+import HttpController from "../../controllers/HttpController";
+import PlaceInfo from "../../types/placeinfo.type";
 
-
-const Place: NextPage = ({ info }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    return (
-    <div>
-        <p>Id: {info.id}</p>
-        <p>{info.name}</p>
-        <p>{info.phone}</p>
-        <p>{info.email}</p>
-    </div>);
+const Place: NextPage<PlaceInfo> = (props) => {
+  return <div></div>;
 };
 
-export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
-    const { uuid } = context.query;
-    const res: Response = await fetch(`https://jsonplaceholder.typicode.com/users/${uuid}`);
-    const info = await res.json();
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { uuid } = context.query;
+  const placeInfo: PlaceInfo = await HttpController.getPlace(uuid);
 
-    if (!info) {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: false,
-            },
-        };
-    }
-
+  if (!placeInfo) {
     return {
-        props: {
-            info,
-        },
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
     };
-}
+  }
 
+  return {
+    props: {
+      placeInfo,
+    },
+  };
+};
 
 export default Place;
