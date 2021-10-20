@@ -1,16 +1,23 @@
 import React, { ReactNode } from "react";
 import { Navbar } from "./Navbar";
-import styles from "../styles/modules/Layout.module.scss";
+import styled from "styled-components";
 
-type LayoutProps = {
+type ILayoutProps = {
   children?: ReactNode;
 };
 
-export const Layout: React.FC = (props: LayoutProps) => {
+const StyledLayout = styled.div`
+  overflow: hidden;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+`;
+
+export const Layout: React.FC<ILayoutProps> = (props) => {
   return (
-    <div className={styles.layout}>
+    <StyledLayout>
       <Navbar />
       <main>{props.children}</main>
-    </div>
+    </StyledLayout>
   );
 };

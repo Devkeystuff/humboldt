@@ -1,28 +1,12 @@
-import {
-  GetServerSideProps,
-  GetServerSidePropsContext,
-  InferGetServerSidePropsType,
-  NextPage,
-} from "next";
-import HttpController from "../../controllers/httpcontroller";
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
+import HttpController from "../../controllers/HttpController";
 import PlaceInfo from "../../types/placeinfo.type";
 
-const Place: NextPage = ({
-  placeInfo,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return (
-    <div>
-      <p>Id: {placeInfo.id}</p>
-      <p>{placeInfo.name}</p>
-      <p>{placeInfo.phone}</p>
-      <p>{placeInfo.email}</p>
-    </div>
-  );
+const Place: NextPage<PlaceInfo> = (props) => {
+  return <div></div>;
 };
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { uuid } = context.query;
   const placeInfo: PlaceInfo = await HttpController.getPlace(uuid);
 

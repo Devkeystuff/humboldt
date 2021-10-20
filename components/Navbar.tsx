@@ -20,18 +20,19 @@ const StyledNav = styled.nav`
     margin: auto;
 
     li {
+      text-transform: uppercase;
       font-family: "Source Code Pro", sans-serif;
     }
   }
 `;
 
 const StyledLink = styled.a<IStyledLinkProps>`
-  color: ${({ isActive, theme }) => (isActive ? theme.colors.accent : "#000")};
+  color: ${({ isActive, theme }) => (isActive ? theme.colors.accent : "#fff")};
 `;
 
 interface INavbarProps {}
 
-export const Navbar: React.FC = (props: INavbarProps) => {
+export const Navbar: React.FC<INavbarProps> = (props) => {
   const router = useRouter();
   return (
     <StyledNav>

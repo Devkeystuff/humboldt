@@ -4,17 +4,10 @@ import Head from "next/head";
 export const HeadFilled: React.FC = () => {
   return (
     <Head>
-      <meta charSet="utf-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-      />
       <meta name="description" content="Description" />
       <meta name="keywords" content="Keywords" />
-
-      <link rel="manifest" href="/manifest.json" />
-      <link
+      {/* <link rel="manifest" href="/manifest.json" /> */}
+      {/* <link
         href="/icons/icon-16x16.png"
         rel="icon"
         type="image/png"
@@ -25,6 +18,12 @@ export const HeadFilled: React.FC = () => {
         rel="icon"
         type="image/png"
         sizes="32x32"
+      /> */}
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossOrigin=""
       />
       <title>Geoshirts</title>
     </Head>

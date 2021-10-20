@@ -1,3 +1,4 @@
+import GlobalStyles from "../components/styled/Global";
 import "../styles/globals.scss";
 import { ThemeProvider } from "styled-components";
 import type { AppProps } from "next/app";
@@ -9,6 +10,7 @@ const theme = {
     primary: "",
     secondary: "",
     accent: "#AAD725",
+    accentShadow: "rgba(170, 215, 37, 0.226)",
   },
 };
 
@@ -19,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <GlobalStyles />
     </ThemeProvider>
   );
 }

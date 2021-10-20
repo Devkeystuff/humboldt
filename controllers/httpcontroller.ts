@@ -19,21 +19,21 @@ export default class HttpController {
   static getElevationMap = async (bounds: LatLngBounds): Promise<ArrayBuffer> => {
     let response = null;
     try {
-      const params = {
-        mode: "no-cors",
+      console.log(bounds)
+      const res = await http.post('http://localhost:8000/get_elevation_map/', {
         params: {
-          demtype: "SRTMGL3",
-          south: bounds.getSouth(),
-          north: bounds.getNorth(),
-          west: bounds.getWest(),
-          east: bounds.getEast()
+          south: 21.577287273637065,
+          north: 21.54391272636294,
+          west: 57.398393216059176,
+          east: 57.3804067839408
         }
-      }
-      const { data } = await http.get<ArrayBuffer>("https://portal.opentopography.org/API/globaldem", params)
-      response = data;
-      console.log(data.byteLength);
+      })
+
+      // console.log(file);
+      // response = data;
+      // console.log(data.byteLength);
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
     return response
   }
