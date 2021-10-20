@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import HttpController from "../../controllers/HttpController";
 import PlaceInfo from "../../types/placeinfo.type";
 

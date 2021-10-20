@@ -1,5 +1,5 @@
 import { Canvas, useLoader } from "@react-three/fiber";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import { Plane, OrbitControls, Box } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
@@ -12,6 +12,7 @@ import { Camera, DoubleSide, FrontSide } from "three";
 
 const Model: React.FC = () => {
   const elevation = useLoader(THREE.TextureLoader, "/scene.png");
+
   // You don't need to check for the presence of the result, when we're here
   // the result is guaranteed to be present since useLoader suspends the component
   return (
@@ -22,7 +23,7 @@ const Model: React.FC = () => {
     >
       <meshStandardMaterial
         attach={"material"}
-        color={"white"}
+        color={"green"}
         metalness={0.2}
         displacementMap={elevation}
         displacementScale={3}
@@ -33,8 +34,12 @@ const Model: React.FC = () => {
 };
 
 const Terrain: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    console.log(canvasRef.current.toDataURL());
+  }, []);
   return (
-    <Canvas camera={{ position: [32, 32, 32] }}>
+    <Canvas ref={canvasRef} camera={{ position: [32, 32, 32] }}>
       <pointLight intensity={1} position={[100, 50, 1]} />
       <Suspense fallback={null}>
         <Model />
