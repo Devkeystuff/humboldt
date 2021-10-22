@@ -5,7 +5,26 @@ const GlobalStyles = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    background: linear-gradient(-45deg, #000000, #1F260B);
+    background-color: black;
+    position: relative;
+    z-index: -1;
+    overflow: auto;
+
+    &::before{
+      content: "";
+      position: absolute;
+      background: url("/images/UpperGradient.png");
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      pointer-events: none;
+      z-index: -1;
+
+    }
   }
 
   a {
@@ -16,6 +35,17 @@ const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+  main::-webkit-scrollbar {
+    display: none;
+  }
+  main {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+
+
+
 `;
 
 export default GlobalStyles;
