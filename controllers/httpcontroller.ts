@@ -1,39 +1,36 @@
-import PlaceInfo from "../types/placeinfo.type";
 import http from "./http-common"
-import { LatLngBounds } from "leaflet";
+import IRequestGetDesign from "../types/RequestGetDesign.type";
+import IResponseGetDesign from "../types/ResponseGetDesign.type";
+import IRequestCreateDesign from "../types/RequestCreateDesign.type";
+import IResponseCreateDesign from "../types/ResponseCreateDesign.type";
 
 export default class HttpController {
-  static getPlace = async (uuid: string | string[] | undefined): Promise<PlaceInfo> => {
-    let response: PlaceInfo = null;
+  static getPlace = async (uuid: string | string[] | undefined): Promise<IResponseGetDesign> => {
+    let response: IResponseGetDesign = null;
     try {
       if (typeof uuid === 'string') {
-        const { data } = await http.get<PlaceInfo>("users/" + uuid)
-        response = { id: data.id, name: data.name, phone: data.phone, email: data.email };
+        const params: IRequestGetDesign = {
+          design_uuid: uuid,
+          api_key: process.env.NEXT_PUBLIC_API_KEY
+        }
+        const { data } = await http.get<IResponseGetDesign>(`${process.env.NEXT_PUBLIC_HOST}/get_design?design_uuid=${params.design_uuid}&api_key=${params.api_key}`)
+        response = data;
       }
-    } catch (error) {
-      console.log(error)
+    } catch (exc) {
+      console.log(exc)
     }
     return response;
   }
 
-  static getElevationMap = async (bounds: LatLngBounds): Promise<ArrayBuffer> => {
-    let response = null;
+  static generateDesign = async (design: IRequestCreateDesign): Promise<IResponseCreateDesign> => {
+    let response: IResponseCreateDesign = null;
     try {
-      console.log(bounds)
-      const res = await http.post('http://localhost:8000/get_elevation_map/', {
-        params: {
-          south: 21.577287273637065,
-          north: 21.54391272636294,
-          west: 57.398393216059176,
-          east: 57.3804067839408
-        }
-      })
-
-      // console.log(file);
-      // response = data;
-      // console.log(data.byteLength);
-    } catch (error) {
-      // console.log(error)
+      console.log(design)
+      const url = `${process.env.NEXT_PUBLIC_HOST}/generate_design?title=${design.title}&description=${design.description}&south=${design.south}&north=${design.north}&west=${design.west}&east=${design.east}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
+      const { data } = await http.post<IResponseCreateDesign>(url);
+      console.log(data)
+    } catch (exc) {
+      console.log(exc);
     }
     return response
   }
