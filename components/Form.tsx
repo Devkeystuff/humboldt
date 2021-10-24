@@ -2,8 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 export interface IFormValues {
-  placeName: string;
-  placeDescription: string;
+  title: string;
+  description: string;
   email: string;
 }
 
@@ -20,7 +20,7 @@ export const Form: React.FC<IFormProps> = (props) => {
   return (
     <form onSubmit={handleSubmit(props.onSubmit)}>
       <input
-        {...register("placeName", {
+        {...register("title", {
           required: "Place name is required",
           maxLength: {
             value: 20,
@@ -28,9 +28,9 @@ export const Form: React.FC<IFormProps> = (props) => {
           },
         })}
       />
-      {errors.placeName && <p>{errors.placeName.message}</p>}
+      {errors.title && <p>{errors.title.message}</p>}
       <input
-        {...register("placeDescription", {
+        {...register("description", {
           required: "Place description is required",
           maxLength: {
             value: 255,
@@ -38,7 +38,7 @@ export const Form: React.FC<IFormProps> = (props) => {
           },
         })}
       />
-      {errors.placeDescription && <p>{errors.placeDescription.message}</p>}
+      {errors.description && <p>{errors.description.message}</p>}
       <input
         {...register("email", {
           required: "Email is required",
