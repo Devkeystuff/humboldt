@@ -3,6 +3,8 @@ export default interface IResponseGetDesign {
     design_uuid: number;
     title: string;
     description: string;
+    edition_title: string;
+    edition_desc: string;
     qr_code_img: string;
     elevation_map_img: string;
     normal_map_img?: string;
