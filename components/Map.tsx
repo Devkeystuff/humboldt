@@ -23,11 +23,12 @@ const Map: React.FC<IMapProps & GeolocatedProps> = (props) => {
         center={[props.coords.latitude, props.coords.longitude]}
         style={{
           zIndex: 1,
-          width: "80vw",
-          height: "50vh",
+          width: "45vw",
+          height: "85vh",
           minHeight: "500px",
-          margin: "auto",
+          margin: "0 50px",
           boxShadow: "0px 8px 100px 0px rgba(0, 0, 0, 0.226)",
+          borderRadius: "10px"
         }}
         zoom={6}
         scrollWheelZoom={true}

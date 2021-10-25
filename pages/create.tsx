@@ -1,10 +1,17 @@
 import type { NextPage } from "next";
-
+import styled from "styled-components";
 import { useEffect, useMemo, useState } from "react";
 import { LatLngBounds } from "leaflet";
 import dynamic from "next/dynamic";
 import HttpController from "../controllers/HttpController";
 import { Form, IFormValues } from "../components/Form";
+import { StyledForm } from "../components/styled/Form.styled.ts";
+
+const StyledCreatePage = styled.div`
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+`;
 
 const Create: NextPage = () => {
   // Disable SSR for Map component
@@ -35,12 +42,12 @@ const Create: NextPage = () => {
   };
 
   return (
-    <div>
+    <StyledCreatePage>
       <div>
         <Map setSelectedBounds={setSelectedBounds} />
       </div>
-      <Form onSubmit={onSubmit} />
-    </div>
+      <Form onSubmit={onSubmit}></Form>
+    </StyledCreatePage>
   );
 };
 

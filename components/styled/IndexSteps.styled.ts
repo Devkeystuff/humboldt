@@ -10,7 +10,7 @@ export const StyledSteps = styled(IndexSteps)`
     position: absolute;
     font-size: 63px;
     font-weight: 900;
-    margin: 54px 0 0px 304px;
+    margin: 53px 0 0px 303px;
     text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
     color: black;
     line-height: 0px;
