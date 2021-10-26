@@ -5,7 +5,6 @@ import { LatLngBounds } from "leaflet";
 import dynamic from "next/dynamic";
 import HttpController from "../controllers/HttpController";
 import { Form, IFormValues } from "../components/Form";
-import { StyledForm } from "../components/styled/Form.styled.ts";
 import IRequestDesign from "../types/RequestCreateDesign.type";
 
 const StyledCreatePage = styled.div`
