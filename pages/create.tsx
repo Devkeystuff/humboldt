@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import HttpController from "../controllers/HttpController";
 import { Form, IFormValues } from "../components/Form";
 import { StyledForm } from "../components/styled/Form.styled.ts";
+import IRequestDesign from "../types/RequestCreateDesign.type";
 
 const StyledCreatePage = styled.div`
   display: flex;
@@ -26,19 +27,21 @@ const Create: NextPage = () => {
   );
 
   const [selectedBounds, setSelectedBounds] = useState<LatLngBounds>();
-  useEffect(() => {
-    (async () => {
-      let response = null;
-      try {
-        response = await HttpController.getElevationMap(selectedBounds);
-      } catch (exc) {
-        console.log(exc);
-      }
-    })();
-  }, [selectedBounds]);
 
   const onSubmit = (data: IFormValues) => {
-    console.log(data);
+    console.log("subtmi");
+    if (!selectedBounds) {
+    }
+    const design: IRequestDesign = {
+      title: data.title,
+      description: data.description,
+      email: data.email,
+      west: selectedBounds.getWest(),
+      north: selectedBounds.getNorth(),
+      east: selectedBounds.getEast(),
+      south: selectedBounds.getSouth(),
+    };
+    HttpController.generateDesign(design);
   };
 
   return (

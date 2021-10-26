@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 
 export interface IFormValues {
-  placeName: string;
-  placeDescription: string;
+  title: string;
+  description: string;
   email: string;
 }
 
@@ -124,26 +124,30 @@ export const Form: React.FC<IFormProps> = (props) => {
     <StyledForm onSubmit={handleSubmit(props.onSubmit)}>
       <h1>SELECT A PLACE</h1>
       <div>
-        <input placeholder="Place Name" autocomplete="off"
-          {...register("placeName", {
-            required: "Place name is required",
-            maxLength: {
-              value: 20,
-              message: "Value longer than 20 characters",
-            },
-          })}
-        />
-        {errors.email && <p className="UpperErrors">{errors.email.message}</p>}
-        <input placeholder="E-mail" autocomplete="off"
-          {...register("email", {
-            required: "Email is required",
-            maxLength: {
-              value: 50,
-              message: "Value longer than 50 characters",
-            },
-          })}
-        />
-        {errors.placeName && <p className="UpperErrors">{errors.placeName.message}</p>}
+        <div>
+          <input placeholder="Place Name" autocomplete="off"
+            {...register("title", {
+              required: "Place name is required",
+              maxLength: {
+                value: 20,
+                message: "Value longer than 20 characters",
+              },
+            })}
+          />
+          {errors.placeName && <p className="UpperErrors">{errors.placeName.message}</p>}
+        </div>
+        <div>
+          <input placeholder="E-mail" autocomplete="off"
+            {...register("email", {
+              required: "Email is required",
+              maxLength: {
+                value: 50,
+                message: "Value longer than 50 characters",
+              },
+            })}
+          />
+          {errors.email && <p className="UpperErrors">{errors.email.message}</p>}
+        </div>
       </div>
       <input id="formDescription" autocomplete="off" placeholder="Description"
         {...register("placeDescription", {
