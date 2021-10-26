@@ -1,6 +1,7 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import React, { Suspense } from "react";
-import { Plane, OrbitControls } from "@react-three/drei";
+import { Plane, OrbitControls, Html } from "@react-three/drei";
+import * as THREE from "three";
 
 interface ITerrainProps {
   texture_img: string;
@@ -9,9 +10,9 @@ interface ITerrainProps {
 
 const Model: React.FC<ITerrainProps> = (props) => {
   // TODO: Load
-  //   const elevation = useLoader(THREE.TextureLoader, "/height.png");
-  //   const normal = useLoader(THREE.TextureLoader, "/normal4.png");
-  //   const color = useLoader(THREE.TextureLoader, "/texture.png");
+  const texture = useLoader(THREE.TextureLoader, "/mountains.png");
+  const elevation = useLoader(THREE.TextureLoader, "/height.png");
+  const normal = useLoader(THREE.TextureLoader, "/normalmap.png");
 
   return (
     <Plane
@@ -21,10 +22,11 @@ const Model: React.FC<ITerrainProps> = (props) => {
     >
       <meshStandardMaterial
         attach={"material"}
-        color={"white"}
-        // map={color}
-        // displacementMap={elevation}
-        // normalMap={normal}
+        map={texture}
+        displacementScale={2}
+        normalMap={normal}
+        displacementMap={elevation}
+        metalness={0}
       />
     </Plane>
   );
@@ -32,21 +34,31 @@ const Model: React.FC<ITerrainProps> = (props) => {
 
 const Terrain: React.FC<ITerrainProps> = (props) => {
   return (
-    <Canvas color={"black"} camera={{ zoom: 1, position: [16, 0, 16] }}>
-      <pointLight intensity={2} position={[10, 10, 1]} color={"#AAD725"} />
-      <pointLight intensity={1} position={[-10, 20, -10]} color={"#fff"} />
-      <Suspense fallback={null}>
+    <Canvas
+      draggable={false}
+      color={"black"}
+      camera={{ zoom: 1, position: [16, 0, 16] }}
+    >
+      <pointLight
+        castShadow
+        intensity={1}
+        position={[10, 5, 1]}
+        color={"#fff"}
+      />
+      <pointLight
+        castShadow
+        intensity={1}
+        position={[-10, 5, 0]}
+        color={"#d6e09e"}
+      />
+      <Suspense fallback={<Html>Loading model...</Html>}>
         <Model
           elevation_img={props.elevation_img}
           texture_img={props.texture_img}
         />
       </Suspense>
 
-      <OrbitControls
-        zoom0={1}
-        maxPolarAngle={Math.PI / 3}
-        minPolarAngle={Math.PI / 3}
-      />
+      <OrbitControls zoom0={1} />
     </Canvas>
   );
 };
