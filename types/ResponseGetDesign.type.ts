@@ -7,7 +7,7 @@ export default interface IResponseGetDesign {
     edition_desc: string;
     qr_code_img: string;
     elevation_map_img: string;
-    normal_map_img?: string;
+    lines_design_img: string;
     is_success: boolean;
     error_code: number;
     error_desc: string;
