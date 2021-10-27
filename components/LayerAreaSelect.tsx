@@ -28,6 +28,8 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (
   );
 
   // Update bounds on move
+  // React missing dependency workaround
+  const onNewBounds = props.onNewBounds;
   useEffect(() => {
     const newBounds = circleRef.current?.getBounds();
     const width = newBounds.getNorthWest().lng - newBounds.getSouthEast().lng;
@@ -37,9 +39,9 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (
     );
     if (newBounds) {
       setBounds(newBounds);
-      props.onNewBounds(actualBounds);
+      onNewBounds(actualBounds);
     }
-  }, [center]);
+  }, [center, onNewBounds]);
 
   return (
     <LayerGroup>
