@@ -19,32 +19,32 @@ const StyledForm = styled.form`
   margin: 0;
   font-family: Raleway;
 
-
-  h1{
+  h1 {
     margin: 0 0 10px 0;
     font-size: 63px;
     font-weight: 900;
-    text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
+    text-shadow: -1px -1px 0 #aad725, 1px -1px 0 #aad725, -1px 1px 0 #aad725,
+      1px 1px 0 #aad725;
     color: black;
 
-    ::before{
+    ::before {
       content: "SELECT A PLACE";
-      position:absolute;
+      position: absolute;
       margin: -3px;
       color: white;
       text-shadow: none;
     }
   }
 
-  #PlaceAndEmail{
+  #PlaceAndEmail {
     width: 95%;
     margin: 0 0 25px 0;
-    div{
+    div {
       width: 100%;
-      &:first-child{
+      &:first-child {
         margin-right: 5%;
       }
-      input{
+      input {
         width: 100%;
         height: 50px;
         font-size: 18px;
@@ -55,20 +55,20 @@ const StyledForm = styled.form`
         color: white;
         transition: 0.3s;
 
-        ::placeholder  {
+        ::placeholder {
           font-family: Source Code Pro;
         }
 
         &:focus {
           outline: none;
-          border: 1px solid #AAD725;
+          border: 1px solid #aad725;
           box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
         }
       }
     }
   }
 
-  #formDescription{
+  #formDescription {
     margin: 20px auto;
     width: 95%;
     padding: 20px 20px 51vh 20px;
@@ -79,50 +79,50 @@ const StyledForm = styled.form`
     font-size: 18px;
     transition: 0.3s;
 
-    ::placeholder  {
+    ::placeholder {
       font-family: Source Code Pro;
     }
 
     &:focus {
       outline: none;
-      border: 1px solid #AAD725;
+      border: 1px solid #aad725;
       box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
     }
   }
 
-  #submitInput{
+  #submitInput {
     width: 45%;
     height: 50px;
     margin: 25px auto;
     font-size: 20px;
-    background-color: #AAD725;
+    background-color: #aad725;
     border-radius: 10px;
     border: none;
     transition: all 0.2s ease-in-out;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
-      box-shadow: 0 7.5px 30px 2px rgba(170, 215, 37, .4);
+      box-shadow: 0 7.5px 30px 2px rgba(170, 215, 37, 0.4);
       font-size: 21px;
     }
   }
 
-  #PlaceAndEmail{
-    display:flex;
+  #PlaceAndEmail {
+    display: flex;
   }
 
-  .UpperErrors{
+  .error {
     position: absolute;
-    color:white;
+    color: white;
     margin: 12px 0 0 0px;
-    &:first-child{
+    &:first-child {
       margin-left: 390px;
     }
   }
 
-  #DescriptionError{
+  #DescriptionError {
     position: absolute;
-    color:white;
+    color: white;
     margin-top: -7px;
   }
 `;
@@ -138,7 +138,9 @@ export const Form: React.FC<IFormProps> = (props) => {
       <h1>SELECT A PLACE</h1>
       <div id="PlaceAndEmail">
         <div>
-          <input placeholder="Place Name" autocomplete="off"
+          <input
+            placeholder="Place Name"
+            autoComplete="off"
             {...register("title", {
               required: "Place name is required",
               maxLength: {
@@ -147,10 +149,12 @@ export const Form: React.FC<IFormProps> = (props) => {
               },
             })}
           />
-          {errors.title && <p className="UpperErrors">{errors.title.message}</p>}
+          {errors.title && <p className="error">{errors.title.message}</p>}
         </div>
         <div>
-          <input placeholder="E-mail" autocomplete="off"
+          <input
+            placeholder="E-mail"
+            autoComplete="off"
             {...register("email", {
               required: "Email is required",
               maxLength: {
@@ -159,11 +163,14 @@ export const Form: React.FC<IFormProps> = (props) => {
               },
             })}
           />
-          {errors.email && <p className="UpperErrors">{errors.email.message}</p>}
+          {errors.email && <p className="error">{errors.email.message}</p>}
         </div>
       </div>
-      <input id="formDescription" autocomplete="off" placeholder="Description"
-        {...register("placeDescription", {
+      <input
+        id="formDescription"
+        autoComplete="off"
+        placeholder="Description"
+        {...register("description", {
           required: "Place description is required",
           maxLength: {
             value: 255,
@@ -171,7 +178,9 @@ export const Form: React.FC<IFormProps> = (props) => {
           },
         })}
       />
-      {errors.placeDescription && <p id="DescriptionError">{errors.placeDescription.message}</p>}
+      {errors.description && (
+        <p id="DescriptionError">{errors.description.message}</p>
+      )}
       <input type="submit" id="submitInput" />
     </StyledForm>
   );
