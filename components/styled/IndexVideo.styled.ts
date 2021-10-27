@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import IndexVideo from "../IndexVideo.tsx";
 
 export const StyledVideo = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { LatLngBounds } from "leaflet";
 import dynamic from "next/dynamic";
 import HttpController from "../controllers/HttpController";

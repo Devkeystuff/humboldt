@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import IndexWelcome from "../IndexWelcome.tsx";
 
 export const StyledHero = styled.div`
   display: flex;
