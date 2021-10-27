@@ -19,17 +19,18 @@ const StyledLayout = styled.div`
   &::before{
     content: "";
     position: absolute;
-    background: url("/images/ellipse-center.png");
-    left: -42.5%;
+    background: url("/images/ellipse2.png");
+    background-repeat: no-repeat;
+    background-position: fixed;
+    left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    background-size: 80vw;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-size: 100vw;
     pointer-events: none;
     z-index: -1;
   }
+
 `;
 
 export const Layout: React.FC<ILayoutProps> = (props) => {

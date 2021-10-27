@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import IndexVideo from "../IndexVideo.tsx";
 
-export const StyledVideo = styled(IndexVideo)`
+export const StyledVideo = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto 50px auto;

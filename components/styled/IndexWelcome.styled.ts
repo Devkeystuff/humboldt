@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import IndexWelcome from "../IndexWelcome.tsx";
 
-export const StyledHero = styled(IndexWelcome)`
+export const StyledHero = styled.div`
   display: flex;
   justify-content: center;
   width: 80vw;
@@ -43,10 +43,12 @@ export const StyledHero = styled(IndexWelcome)`
       border-radius: 5px;
       border: none;
       font-size: 16px;
-      box-shadow: 0 5px 15px rgba(170,215,37,0.4);
+      transition: all 0.2s ease-in-out;
 
       :hover{
         cursor: pointer;
+        box-shadow: 0 7.5px 30px 2px rgba(170, 215, 37, .4);
+        font-size: 18px;
       }
     }
   }
