@@ -22,7 +22,6 @@ const Home: NextPage = () => {
         <div>
           <span>
             <h2>HOW IT'S DONE</h2>
-            <h2>HOW IT'S DONE</h2>
           </span>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A amet posuere pellentesque elit turpis scelerisque in ligula. Mollis odio lectus mattis est nisi, pretium ac duis feugiat. Orci pulvinar proin amet enim at nunc id ac. Mattis amet faucibus mus ut nibh neque.</p>
         </div>
@@ -33,7 +32,6 @@ const Home: NextPage = () => {
 
       <StyledSteps>
         <div>
-          <h2>IT'S JUST THAT EASY</h2>
           <h2>IT'S JUST THAT EASY</h2>
         </div>
         <div className="StepsDiv">

@@ -6,27 +6,26 @@ export const StyledSteps = styled.div`
   font-family: Raleway;
   position: relative;
 
-  & h2 {
-    position: absolute;
-    font-size: 63px;
+  h2{
+    margin: 0 5vw 50px 15.5%;
+    font-size: 45px;
     font-weight: 900;
-    margin: 53px 0 0px 303px;
     text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
     color: black;
-    line-height: 0px;
-  }
 
-  & h2:nth-child(2){
-    margin: 50px 0 50px 300px;
-    line-height: 0px;
-    text-shadow: none;
-    font-weight: 900;
-    color: white;
+    ::before{
+      width: 500px;
+      content: "IT'S JUST THAT EASY";
+      position:absolute;
+      margin: -3px;
+      color: white;
+      text-shadow: none;
+    }
   }
 
   .StepsDiv{
-    margin-top: 50px;
-    padding: 150px 0 150px 0;
+    margin-top: 20px;
+    padding: 0px 0 150px 0;
     display: flex;
     justify-content: center;
 

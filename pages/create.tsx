@@ -10,8 +10,28 @@ import IRequestDesign from "../types/RequestCreateDesign.type";
 
 const StyledCreatePage = styled.div`
   display: flex;
-  justify-content: center;
-  overflow-y: hidden;
+  padding-left: 5%;
+
+  h1{
+    font-family: Raleway;
+    margin: 20px 50px;
+    font-size: 63px;
+    font-weight: 900;
+    text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
+    color: black;
+
+    ::before{
+      content: "SELECT A PLACE";
+      position:absolute;
+      margin: -3px;
+      color: white;
+      text-shadow: none;
+    }
+  }
+
+  .Create-main-part{
+    display:inline-flex;
+  }
 `;
 
 const Create: NextPage = () => {
@@ -47,9 +67,12 @@ const Create: NextPage = () => {
   return (
     <StyledCreatePage>
       <div>
-        <Map setSelectedBounds={setSelectedBounds} />
+        <h1>SELECT A PLACE</h1>
+        <div className="Create-main-part">
+          <Map setSelectedBounds={setSelectedBounds} />
+          <Form onSubmit={onSubmit}></Form>
+        </div>
       </div>
-      <Form onSubmit={onSubmit}></Form>
     </StyledCreatePage>
   );
 };

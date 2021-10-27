@@ -23,8 +23,8 @@ const Map: React.FC<IMapProps & GeolocatedProps> = (props) => {
         center={[props.coords.latitude, props.coords.longitude]}
         style={{
           zIndex: 1,
-          width: "45vw",
-          height: "85vh",
+          width: "40vw",
+          height: "70vh",
           minHeight: "500px",
           margin: "0 50px",
           boxShadow: "0px 8px 100px 0px rgba(0, 0, 0, 0.226)",
