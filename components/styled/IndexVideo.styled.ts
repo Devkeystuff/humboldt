@@ -13,21 +13,25 @@ export const StyledVideo = styled.div`
     width: 50%;
     height: 385px;
 
-    h2 {
-      font-size: 40px;
-      margin: 10px 5vw 0 0;
-      font-weight: 900;
-      float: right;
-      color: black;
-      text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
-    }
+    span{
+      position: relative;
+      h2{
+        margin: 0 5vw 20px 0;
+        float:right;
+        font-size: 45px;
+        font-weight: 900;
+        text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
+        color: black;
 
-    h2:nth-child(2) {
-      margin: -27px 5.15vw 0 0;
-      line-height: 2px;
-      color: white;
-      font-weight: 900;
-      text-shadow: none;
+        ::before{
+          width: 500px;
+          content: "HOW IT'S DONE";
+          position:absolute;
+          margin: -3px;
+          color: white;
+          text-shadow: none;
+        }
+      }
     }
 
     p {
@@ -35,13 +39,13 @@ export const StyledVideo = styled.div`
       width: 70%;
       float: right;
       text-align: right;
-      margin: 50px 5vw 20px 0;
+      margin: 0px 5vw 20px 0;
     }
 
     iframe{
       width: 75%;
       height: 100%;
-      margin: 0 4.5vw;
+      margin: 0 3vw;
     }
   }
 `

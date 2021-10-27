@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { Button } from "./styled/Button.styled";
 
 export interface IFormValues {
   title: string;
@@ -15,7 +16,7 @@ interface IFormProps {
 const StyledForm = styled.form`
   display: flex-inline;
   width: 40vw;
-  height: 85vh;
+  height: 70vh;
   margin: 0;
   font-family: Raleway;
 
@@ -36,42 +37,33 @@ const StyledForm = styled.form`
     }
   }
 
-  #PlaceAndEmail {
+  .credential-inputs {
     width: 95%;
-    margin: 0 0 25px 0;
-    div {
-      width: 100%;
-      &:first-child {
-        margin-right: 5%;
-      }
-      input {
-        width: 100%;
-        height: 50px;
-        font-size: 18px;
-        padding: 20px;
-        border: 1px solid rgba(51, 51, 51);
-        background-color: rgba(51, 51, 51);
-        border-radius: 10px;
-        color: white;
-        transition: 0.3s;
+    height: 50px;
+    font-size: 18px;
+    padding: 20px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(51, 51, 51);
+    background-color: rgba(51, 51, 51);
+    border-radius: 10px;
+    color: white;
+    transition: 0.3s;
 
-        ::placeholder {
-          font-family: Source Code Pro;
-        }
+    ::placeholder {
+      font-family: Source Code Pro;
+    }
 
-        &:focus {
-          outline: none;
-          border: 1px solid #aad725;
-          box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
-        }
-      }
+    &:focus {
+      outline: none;
+      border: 1px solid #aad725;
+      box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
     }
   }
 
   #formDescription {
-    margin: 20px auto;
+    margin-bottom: 25px;
     width: 95%;
-    padding: 20px 20px 51vh 20px;
+    padding: 20px 20px 35vh 20px;
     border: 1px solid rgba(51, 51, 51);
     background-color: rgba(51, 51, 51);
     border-radius: 10px;
@@ -90,21 +82,10 @@ const StyledForm = styled.form`
     }
   }
 
-  #submitInput {
-    width: 45%;
-    height: 50px;
-    margin: 25px auto;
-    font-size: 20px;
-    background-color: #aad725;
+  Button {
     border-radius: 10px;
-    border: none;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      cursor: pointer;
-      box-shadow: 0 7.5px 30px 2px rgba(170, 215, 37, 0.4);
-      font-size: 21px;
-    }
+    margin: 20px 0;
+    width: 95%;
   }
 
   #PlaceAndEmail {
@@ -114,7 +95,7 @@ const StyledForm = styled.form`
   .error {
     position: absolute;
     color: white;
-    margin: 12px 0 0 0px;
+    margin-top: -30px;
     &:first-child {
       margin-left: 390px;
     }
@@ -123,7 +104,7 @@ const StyledForm = styled.form`
   #DescriptionError {
     position: absolute;
     color: white;
-    margin-top: -7px;
+    margin-top: -12px;
   }
 `;
 
@@ -135,36 +116,35 @@ export const Form: React.FC<IFormProps> = (props) => {
   } = useForm<IFormValues>();
   return (
     <StyledForm onSubmit={handleSubmit(props.onSubmit)}>
-      <h1>SELECT A PLACE</h1>
-      <div id="PlaceAndEmail">
-        <div>
-          <input
-            placeholder="Place Name"
-            autoComplete="off"
-            {...register("title", {
-              required: "Place name is required",
-              maxLength: {
-                value: 20,
-                message: "Value longer than 20 characters",
-              },
-            })}
-          />
-          {errors.title && <p className="error">{errors.title.message}</p>}
-        </div>
-        <div>
-          <input
-            placeholder="E-mail"
-            autoComplete="off"
-            {...register("email", {
-              required: "Email is required",
-              maxLength: {
-                value: 50,
-                message: "Value longer than 50 characters",
-              },
-            })}
-          />
-          {errors.email && <p className="error">{errors.email.message}</p>}
-        </div>
+      <div>
+        <input
+          placeholder="Place Name"
+          autoComplete="off"
+          className="credential-inputs"
+          {...register("title", {
+            required: "Place name is required",
+            maxLength: {
+              value: 20,
+              message: "Value longer than 20 characters",
+            },
+          })}
+        />
+        {errors.title && <p className="UpperErrors">{errors.title.message}</p>}
+      </div>
+      <div>
+        <input
+          placeholder="E-mail"
+          autoComplete="off"
+          className="credential-inputs"
+          {...register("email", {
+            required: "Email is required",
+            maxLength: {
+              value: 50,
+              message: "Value longer than 50 characters",
+            },
+          })}
+        />
+        {errors.email && <p className="UpperErrors">{errors.email.message}</p>}
       </div>
       <input
         id="formDescription"
@@ -173,7 +153,7 @@ export const Form: React.FC<IFormProps> = (props) => {
         {...register("description", {
           required: "Place description is required",
           maxLength: {
-            value: 255,
+            value: 200,
             message: "Value longer than 255 characters",
           },
         })}
@@ -181,7 +161,7 @@ export const Form: React.FC<IFormProps> = (props) => {
       {errors.description && (
         <p id="DescriptionError">{errors.description.message}</p>
       )}
-      <input type="submit" id="submitInput" />
+      <Button>Confirm</Button>
     </StyledForm>
   );
 };
