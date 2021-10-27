@@ -2,7 +2,7 @@ import React, { Ref, useEffect, useRef, useState } from "react";
 import L, { LatLng, LatLngBounds } from "leaflet";
 import { Circle, LayerGroup, Marker, Rectangle } from "react-leaflet";
 
-const RADIUS = 1000;
+const RADIUS = 10000;
 
 const markerCenter = new L.Icon({
   iconUrl: "marker-center.png",
@@ -30,9 +30,14 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (
   // Update bounds on move
   useEffect(() => {
     const newBounds = circleRef.current?.getBounds();
+    const width = newBounds.getNorthWest().lng - newBounds.getSouthEast().lng;
+    const actualBounds = new LatLngBounds(
+      new LatLng(center.lat - width / 2, center.lng - width / 2),
+      new LatLng(center.lat + width / 2, center.lng + width / 2)
+    );
     if (newBounds) {
       setBounds(newBounds);
-      props.onNewBounds(newBounds);
+      props.onNewBounds(actualBounds);
     }
   }, [center]);
 

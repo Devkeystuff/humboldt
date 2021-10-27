@@ -28,7 +28,6 @@ const Create: NextPage = () => {
   const [selectedBounds, setSelectedBounds] = useState<LatLngBounds>();
 
   const onSubmit = (data: IFormValues) => {
-    console.log("subtmi");
     if (!selectedBounds) {
     }
     const design: IRequestDesign = {
