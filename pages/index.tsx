@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       <StyledVideo>
         <div>
           <span>
-            <h2>HOW IT&quot;S DONE</h2>
+            <h2>HOW IT'S DONE</h2>
           </span>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. A amet
@@ -39,12 +39,11 @@ const Home: NextPage = () => {
 
       <StyledSteps>
         <div>
-          <h2>IT&quot;S JUST THAT EASY</h2>
-          <h2>IT&quot;S JUST THAT EASY</h2>
+          <h2>IT'S JUST THAT EASY</h2>
         </div>
         <div className="StepsDiv">
           <div>
-            <p>IT&quot;S JUST THAT EASY</p>
+            <p>IT'S JUST THAT EASYIT'S JUST THAT EASY</p>
           </div>
           <div></div>
           <div></div>
