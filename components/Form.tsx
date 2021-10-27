@@ -36,28 +36,34 @@ const StyledForm = styled.form`
     }
   }
 
-  div{
-    margin: 20px auto;
-    input{
-      width: 45%;
-      height: 50px;
-      margin-right: 5%;
-      font-size: 18px;
-      padding: 20px;
-      border: 1px solid rgba(51, 51, 51);
-      background-color: rgba(51, 51, 51);
-      border-radius: 10px;
-      color: white;
-      transition: 0.3s;
-
-      ::placeholder  {
-        font-family: Source Code Pro;
+  #PlaceAndEmail{
+    width: 95%;
+    margin: 0 0 25px 0;
+    div{
+      width: 100%;
+      &:first-child{
+        margin-right: 5%;
       }
+      input{
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        padding: 20px;
+        border: 1px solid rgba(51, 51, 51);
+        background-color: rgba(51, 51, 51);
+        border-radius: 10px;
+        color: white;
+        transition: 0.3s;
 
-      &:focus {
-        outline: none;
-        border: 1px solid #AAD725;
-        box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
+        ::placeholder  {
+          font-family: Source Code Pro;
+        }
+
+        &:focus {
+          outline: none;
+          border: 1px solid #AAD725;
+          box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
+        }
       }
     }
   }
@@ -92,17 +98,24 @@ const StyledForm = styled.form`
     background-color: #AAD725;
     border-radius: 10px;
     border: none;
+    transition: all 0.2s ease-in-out;
 
     &:hover{
       cursor: pointer;
+      box-shadow: 0 7.5px 30px 2px rgba(170, 215, 37, .4);
+      font-size: 21px;
     }
+  }
+
+  #PlaceAndEmail{
+    display:flex;
   }
 
   .UpperErrors{
     position: absolute;
     color:white;
-    margin: 10px 0 0 0px;
-    &:nth-child(2){
+    margin: 12px 0 0 0px;
+    &:first-child{
       margin-left: 390px;
     }
   }
@@ -123,7 +136,7 @@ export const Form: React.FC<IFormProps> = (props) => {
   return (
     <StyledForm onSubmit={handleSubmit(props.onSubmit)}>
       <h1>SELECT A PLACE</h1>
-      <div>
+      <div id="PlaceAndEmail">
         <div>
           <input placeholder="Place Name" autocomplete="off"
             {...register("title", {
@@ -134,7 +147,7 @@ export const Form: React.FC<IFormProps> = (props) => {
               },
             })}
           />
-          {errors.placeName && <p className="UpperErrors">{errors.placeName.message}</p>}
+          {errors.title && <p className="UpperErrors">{errors.title.message}</p>}
         </div>
         <div>
           <input placeholder="E-mail" autocomplete="off"

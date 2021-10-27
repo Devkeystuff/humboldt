@@ -13,11 +13,12 @@ const GlobalStyles = createGlobalStyle`
     &::before{
       content: "";
       position: absolute;
-      background: url("/images/UpperGradient.png");
-      left: 0;
+      background: url("/images/BlueRadiant.png");
+      left: -40%;
       right: 0;
       top: 0;
       bottom: 0;
+      opacity: 0.7;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -42,9 +43,6 @@ const GlobalStyles = createGlobalStyle`
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
-
-
-
 
 `;
 

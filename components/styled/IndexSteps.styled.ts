@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import IndexSteps from "../IndexSteps.tsx";
 
-export const StyledSteps = styled(IndexSteps)`
+export const StyledSteps = styled.div`
   color: white;
   font-family: Raleway;
   position: relative;

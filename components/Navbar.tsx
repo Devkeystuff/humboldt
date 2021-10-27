@@ -22,6 +22,19 @@ const StyledNav = styled.nav`
     li {
       text-transform: uppercase;
       font-family: "Source Code Pro", sans-serif;
+
+      &::after{
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #AAD725;
+        transition: width .3s;
+      }
+
+      &:hover::after{
+        width:100%;
+      }
     }
   }
 `;
