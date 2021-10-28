@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
+import Router from "next/router";
 import { useMemo, useState } from "react";
 import { LatLngBounds } from "leaflet";
 import dynamic from "next/dynamic";
@@ -11,25 +12,26 @@ const StyledCreatePage = styled.div`
   display: flex;
   padding-left: 5%;
 
-  h1{
+  h1 {
     font-family: Raleway;
     margin: 20px 50px;
     font-size: 63px;
     font-weight: 900;
-    text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
+    text-shadow: -1px -1px 0 #aad725, 1px -1px 0 #aad725, -1px 1px 0 #aad725,
+      1px 1px 0 #aad725;
     color: black;
 
-    ::before{
+    ::before {
       content: "SELECT A PLACE";
-      position:absolute;
+      position: absolute;
       margin: -3px;
       color: white;
       text-shadow: none;
     }
   }
 
-  .Create-main-part{
-    display:inline-flex;
+  .Create-main-part {
+    display: inline-flex;
   }
 `;
 
@@ -47,7 +49,7 @@ const Create: NextPage = () => {
 
   const [selectedBounds, setSelectedBounds] = useState<LatLngBounds>();
 
-  const onSubmit = (data: IFormValues) => {
+  const onSubmit = async (data: IFormValues) => {
     if (!selectedBounds) {
     }
     const design: IRequestDesign = {
@@ -59,7 +61,10 @@ const Create: NextPage = () => {
       east: selectedBounds.getEast(),
       south: selectedBounds.getSouth(),
     };
-    HttpController.generateDesign(design);
+    const res = await HttpController.generateDesign(design);
+    if (res.design_uuid) {
+      Router.push(`/places/${res.design_uuid}`);
+    }
   };
 
   return (

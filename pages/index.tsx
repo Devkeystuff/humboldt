@@ -33,7 +33,13 @@ const Home: NextPage = () => {
           </p>
         </div>
         <div>
-          <iframe src="https://www.youtube.com/embed/IuJIE0NbL8U"></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/IuJIE0NbL8U"
+            title="YouTube video player"
+            style={{ border: 0 }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
       </StyledVideo>
 
