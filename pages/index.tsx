@@ -13,8 +13,8 @@ const Home: NextPage = () => {
             GEO-GRAPHICALLY <p>UNIQUE</p> CLOTHING
           </h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum
-            morbi tellus euismod ornare semper nisl, quam convallis.
+            Order uniquely designed t-shirts to represent the place you have
+            travelled to.
           </p>
           <button>Create</button>
         </div>
@@ -26,10 +26,8 @@ const Home: NextPage = () => {
             <h2>HOW IT'S DONE</h2>
           </span>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. A amet
-            posuere pellentesque elit turpis scelerisque in ligula. Mollis odio
-            lectus mattis est nisi, pretium ac duis feugiat. Orci pulvinar proin
-            amet enim at nunc id ac. Mattis amet faucibus mus ut nibh neque.
+            Watch this simple video to quickly grasp the idea of how Humboldt.
+            works
           </p>
         </div>
         <div>
@@ -48,9 +46,7 @@ const Home: NextPage = () => {
           <h2>IT'S JUST THAT EASY</h2>
         </div>
         <div className="StepsDiv">
-          <div>
-            <p>IT'S JUST THAT EASYIT'S JUST THAT EASY</p>
-          </div>
+          <div></div>
           <div></div>
           <div></div>
         </div>

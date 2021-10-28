@@ -36,7 +36,7 @@ export const StyledVideo = styled.div`
 
     p {
       font-family: Source Code Pro;
-      width: 70%;
+      width: 50%;
       float: right;
       text-align: right;
       margin: 0px 5vw 20px 0;
