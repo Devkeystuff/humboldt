@@ -84,7 +84,6 @@ const StyledForm = styled.form`
   }
 
   Button{
-    border-radius: 10px;
     margin: 20px 0;
     width: 95%;
 

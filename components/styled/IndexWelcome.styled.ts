@@ -33,23 +33,5 @@ export const StyledHero = styled.div`
       width: 520px;
       margin: 10px 0 20px 55px;
     }
-
-    button{
-      height: 55px;
-      width: 210px;
-      margin: 10px 0 20px 55px;
-      background-color: #AAD725;
-      font-weight: bold;
-      border-radius: 5px;
-      border: none;
-      font-size: 16px;
-      transition: all 0.2s ease-in-out;
-
-      :hover{
-        cursor: pointer;
-        box-shadow: 0 7.5px 30px 2px rgba(170, 215, 37, .4);
-        font-size: 18px;
-      }
-    }
   }
 `;

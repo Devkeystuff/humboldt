@@ -11,6 +11,7 @@ import IRequestDesign from "../types/RequestCreateDesign.type";
 const StyledCreatePage = styled.div`
   display: flex;
   padding-left: 5%;
+  position: relative;
 
   h1{
     font-family: Raleway;
