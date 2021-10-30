@@ -26,7 +26,7 @@ export default class HttpController {
     let response: IResponseCreateDesign = null;
     try {
       console.log(design)
-      const url = `${process.env.NEXT_PUBLIC_HOST}/generate_design?title=${design.title}&description=${design.description}&south=${design.south}&north=${design.north}&west=${design.west}&east=${design.east}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
+      const url = `${process.env.NEXT_PUBLIC_HOST}/generate_design?title=${design.title}&description=${design.description}&is_preview=${design.is_preview}&south=${design.south}&north=${design.north}&west=${design.west}&east=${design.east}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
       const { data } = await http.post<IResponseCreateDesign>(url);
       response = data;
       console.log(data)

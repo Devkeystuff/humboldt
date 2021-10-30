@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { Button } from "./styled/Button.styled";
+import { FormControl } from "./styled/FormControl.styled";
+import { InlineGrid } from "./styled/InlineGrid.styled";
 
 export interface IFormValues {
   title: string;
@@ -10,87 +12,18 @@ export interface IFormValues {
 }
 
 interface IFormProps {
-  onSubmit: (data: IFormValues) => void;
+  onSubmit: (data: IFormValues, preview: boolean) => void;
+  setIsLoading: (isLoading: boolean) => void;
 }
 
 const StyledForm = styled.form`
-  display: flex-inline;
-  width: 40vw;
-  height: 70vh;
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: space;
   margin: 0;
   font-family: Raleway;
-
-  h1 {
-    margin: 0 0 10px 0;
-    font-size: 63px;
-    font-weight: 900;
-    text-shadow: -1px -1px 0 #aad725, 1px -1px 0 #aad725, -1px 1px 0 #aad725,
-      1px 1px 0 #aad725;
-    color: black;
-
-    ::before {
-      content: "SELECT A PLACE";
-      position: absolute;
-      margin: -3px;
-      color: white;
-      text-shadow: none;
-    }
-  }
-
-  .credential-inputs {
-    width: 95%;
-    height: 50px;
-    font-size: 18px;
-    padding: 20px;
-    margin-bottom: 40px;
-    border: 1px solid rgba(51, 51, 51);
-    background-color: rgba(51, 51, 51);
-    border-radius: 10px;
-    color: white;
-    transition: 0.3s;
-
-    ::placeholder {
-      font-family: Source Code Pro;
-    }
-
-    &:focus {
-      outline: none;
-      border: 1px solid #aad725;
-      box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
-    }
-  }
-
-  #formDescription {
-    margin-bottom: 25px;
-    width: 95%;
-    padding: 20px 20px 35vh 20px;
-    border: 1px solid rgba(51, 51, 51);
-    background-color: rgba(51, 51, 51);
-    border-radius: 10px;
-    color: white;
-    font-size: 18px;
-    transition: 0.3s;
-
-    ::placeholder {
-      font-family: Source Code Pro;
-    }
-
-    &:focus {
-      outline: none;
-      border: 1px solid #aad725;
-      box-shadow: 0px 8px 92px rgba(170, 215, 37, 0.32);
-    }
-  }
-
-  Button {
-    border-radius: 10px;
-    margin: 20px 0;
-    width: 95%;
-  }
-
-  #PlaceAndEmail {
-    display: flex;
-  }
 
   .error {
     position: absolute;
@@ -100,24 +33,29 @@ const StyledForm = styled.form`
       margin-left: 390px;
     }
   }
-
-  #DescriptionError {
-    position: absolute;
-    color: white;
-    margin-top: -12px;
-  }
 `;
 
 export const Form: React.FC<IFormProps> = (props) => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IFormValues>();
+  const { isSubmitting } = useFormState<IFormValues>({ control });
+
+  const setIsLoading = props.setIsLoading;
+  useEffect(() => {
+    setIsLoading(isSubmitting);
+  }, [isSubmitting, setIsLoading]);
+
+  const onPreview = () => handleSubmit((data) => props.onSubmit(data, true))();
+  const onSubmit = () => handleSubmit((data) => props.onSubmit(data, false))();
+
   return (
-    <StyledForm onSubmit={handleSubmit(props.onSubmit)}>
+    <StyledForm>
       <div>
-        <input
+        <FormControl
           placeholder="Place Name"
           autoComplete="off"
           className="credential-inputs"
@@ -132,7 +70,7 @@ export const Form: React.FC<IFormProps> = (props) => {
         {errors.title && <p className="UpperErrors">{errors.title.message}</p>}
       </div>
       <div>
-        <input
+        <FormControl
           placeholder="E-mail"
           autoComplete="off"
           className="credential-inputs"
@@ -146,7 +84,7 @@ export const Form: React.FC<IFormProps> = (props) => {
         />
         {errors.email && <p className="UpperErrors">{errors.email.message}</p>}
       </div>
-      <input
+      <FormControl
         id="formDescription"
         autoComplete="off"
         placeholder="Description"
@@ -161,7 +99,14 @@ export const Form: React.FC<IFormProps> = (props) => {
       {errors.description && (
         <p id="DescriptionError">{errors.description.message}</p>
       )}
-      <Button>Confirm</Button>
+      <InlineGrid>
+        <Button disabled={isSubmitting} onClick={onPreview} type="button">
+          Preview
+        </Button>
+        <Button disabled={true} onClick={onSubmit} type="button">
+          Continue
+        </Button>
+      </InlineGrid>
     </StyledForm>
   );
 };

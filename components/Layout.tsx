@@ -14,9 +14,10 @@ const StyledLayout = styled.div`
 
   main {
     overflow-y: scroll;
+    padding: 0 10vw;
   }
 
-  &::before{
+  &::before {
     content: "";
     position: absolute;
     background: url("/images/ellipse2.png");
@@ -30,7 +31,6 @@ const StyledLayout = styled.div`
     pointer-events: none;
     z-index: -1;
   }
-
 `;
 
 export const Layout: React.FC<ILayoutProps> = (props) => {
