@@ -101,7 +101,7 @@ export const Form: React.FC<IFormProps> = (props) => {
         <p id="DescriptionError">{errors.description.message}</p>
       )}
       <div className="merch-options">
-        <button>
+        <button type="button">
           <p>T-SHIRT</p>
           <img src="/images/white-shirt.png"></img>
         </button>
@@ -113,10 +113,6 @@ export const Form: React.FC<IFormProps> = (props) => {
           <option value="white">White</option>
           <option value="black">Black</option>
         </select>
-      </div>
-      <div className="form-final-buttons">
-        <Button>PREVIEW</Button>
-        <Button>Confirm</Button>
       </div>
       <InlineGrid>
         <Button disabled={isSubmitting} onClick={onPreview} type="button">
