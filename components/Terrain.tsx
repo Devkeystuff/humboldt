@@ -10,9 +10,9 @@ interface ITerrainProps {
 
 const Model: React.FC<ITerrainProps> = (props) => {
   // TODO: Load
-  const texture = useLoader(THREE.TextureLoader, "/mountains.png");
-  const elevation = useLoader(THREE.TextureLoader, "/height.png");
-  const normal = useLoader(THREE.TextureLoader, "/normalmap.png");
+  const texture = useLoader(THREE.TextureLoader, props.texture_img);
+  const elevation = useLoader(THREE.TextureLoader, props.elevation_img);
+  //   const normal = useLoader(THREE.TextureLoader, "/normalmap.png");
 
   return (
     <Plane
@@ -24,7 +24,7 @@ const Model: React.FC<ITerrainProps> = (props) => {
         attach={"material"}
         map={texture}
         displacementScale={2}
-        normalMap={normal}
+        // normalMap={normal}
         displacementMap={elevation}
         metalness={0}
       />

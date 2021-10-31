@@ -117,8 +117,8 @@ const Create: NextPage = () => {
             ) : (
               imgPreview && (
                 <Image
-                  width={"100%"}
-                  height={"100%"}
+                  width={1952}
+                  height={2631}
                   src={imgPreview}
                   alt={"Shirt design demonstration"}
                 />
