@@ -34,4 +34,24 @@ export const StyledHero = styled.div`
       margin: 10px 0 20px 55px;
     }
   }
+
+  .shirtDisplay{
+    position: relative;
+    img{
+      float: right;
+      margin: 120px 70px;
+      width: 420px;
+      height: auto;
+      z-index: 2;
+    }
+    #shirts-on-display{
+      image-resolution: 300dpi snap;
+      width:400px;
+      height: auto;
+      position: absolute;
+      z-index: 1;
+
+      right: 0;
+    }
+  }
 `;

@@ -16,7 +16,7 @@ interface IFormProps {
 const StyledForm = styled.form`
   display: flex-inline;
   width: 40vw;
-  height: 70vh;
+  height: 80vh;
   margin: 0;
   font-family: Raleway;
 
@@ -39,10 +39,10 @@ const StyledForm = styled.form`
 
   .credential-inputs{
     width: 95%;
-    height: 50px;
-    font-size: 18px;
+    height: 5vh;
+    font-size: 1vw;
     padding: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 4.2vh;
     border: 1px solid rgba(51, 51, 51);
     background-color: rgba(51, 51, 51);
     border-radius: 10px;
@@ -64,12 +64,12 @@ const StyledForm = styled.form`
   #formDescription{
     margin-bottom: 25px;
     width: 95%;
-    padding: 20px 20px 35vh 20px;
+    padding: 20px 20px 15vh 20px;
     border: 1px solid rgba(51, 51, 51);
     background-color: rgba(51, 51, 51);
     border-radius: 10px;
     color: white;
-    font-size: 18px;
+    font-size: 1vw;
     transition: 0.3s;
 
     ::placeholder  {
@@ -86,7 +86,6 @@ const StyledForm = styled.form`
   Button{
     margin: 20px 0;
     width: 95%;
-
   }
 
   #PlaceAndEmail{
@@ -94,6 +93,7 @@ const StyledForm = styled.form`
   }
 
   .UpperErrors{
+    font-size: 0.8vw;
     position: absolute;
     color:white;
     margin-top: -30px;
@@ -106,6 +106,60 @@ const StyledForm = styled.form`
     position: absolute;
     color:white;
     margin-top: -12px;
+    font-size: 0.8vw;
+  }
+
+  .merch-options{
+    display:flex;
+    width: 95%;
+
+    button{
+      font-family: Raleway;
+      color: white;
+      width: 5vw;
+      height: 10vh;
+      font-size: 1.45vh;
+      margin-right: 3vw;
+      background-color: rgba(51, 51, 51);
+      border-radius: 10px;
+      border:none;
+      p{
+        margin: 0px auto 2px auto;
+      }
+      img{
+        width: 2.3vw;
+        height: auto;
+      }
+      :hover{
+        cursor: pointer;
+      }
+
+    }
+
+    select{
+      position:relative;
+      width: 8vw;
+      height: 10vh;
+      margin: 20px 0 0 265px;
+      border-radius: 10px;
+      background-color: rgba(51, 51, 51);
+      border:none;
+      color: white;
+      &:after{
+        content:"";
+        position: absolute;
+        width: 10px;
+      }
+    }
+  }
+
+  .form-final-buttons{
+    display:flex;
+    width: 95%;
+    justify-content:space-between;
+    button{
+      width: 40%;
+    }
   }
 `;
 
@@ -151,7 +205,24 @@ export const Form: React.FC<IFormProps> = (props) => {
         })}
       />
       {errors.placeDescription && <p id="DescriptionError">{errors.placeDescription.message}</p>}
-      <Button>Confirm</Button>
+      <div className="merch-options">
+        <button>
+          <p>T-SHIRT</p>
+          <img src="/images/white-shirt.png"></img>
+        </button>
+        <button>
+          <p>MUG</p>
+          <img src="/images/white-mug.png"></img>
+        </button>
+        <select >
+          <option value="white">White</option>
+          <option value="black">Black</option>
+        </select>
+      </div>
+      <div className="form-final-buttons">
+        <Button>PREVIEW</Button>
+        <Button>Confirm</Button>
+      </div>
     </StyledForm>
   );
 };

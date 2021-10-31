@@ -19,7 +19,7 @@ export const Button = styled.button<IButtonProps>`
   display: block;
   margin: ${({ isMapButton }) => isMapButton ? 0 : 20}px auto;
   cursor: pointer;
-  transform: translate(0, -${({ isMapButton }) => isMapButton ? 200 : 0}%);
+  transform: translate(0, -${({ isMapButton }) => isMapButton ? 50 : 0}%);
   box-shadow: 0 8px 20px 0 ${({ theme }) => theme.colors.accentShadow};
   z-index: 5;
   transition: all 0.2s ease-in-out;

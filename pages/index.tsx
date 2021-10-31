@@ -10,11 +10,12 @@ const Home: NextPage = () => {
     <div>
       <StyledHero>
         <div className="shirtDisplay">
-
+          <img src="/images/shirts-corners.png"></img>
+          <img id="shirts-on-display" src="/images/humboldt-white.png"></img>
         </div>
         <div>
-          <h1>GEO-GRAPHICALLY <p>UNIQUE</p> CLOTHING</h1>
-          <p>Order uniquely designed t-shirts to represent the place you have travelled to.</p>
+          <h1>GEO-GRAPHICALLY <p>UNIQUE</p> MERCH</h1>
+          <p>Order uniquely designed merch to represent the place you have travelled to.</p>
           <Button>Create</Button>
         </div>
       </StyledHero>

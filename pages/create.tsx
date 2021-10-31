@@ -10,12 +10,14 @@ import IRequestDesign from "../types/RequestCreateDesign.type";
 
 const StyledCreatePage = styled.div`
   display: flex;
-  padding-left: 5%;
+  width:95%;
+  margin: 0 auto;
+  padding: 0 7%;
   position: relative;
 
   h1{
     font-family: Raleway;
-    margin: 20px 50px;
+    margin: 0px 0 20px 0;
     font-size: 63px;
     font-weight: 900;
     text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
@@ -30,8 +32,19 @@ const StyledCreatePage = styled.div`
     }
   }
 
-  .Create-main-part{
-    display:inline-flex;
+  .lower-part{
+    display: flex;
+  }
+
+  .shirt-preview{
+    position: relative;
+    img{
+      width:500px;
+      height: auto;
+      position: absolute;
+      top: 5vh;
+      left: 7.5vw;
+    }
   }
 `;
 
@@ -69,9 +82,12 @@ const Create: NextPage = () => {
     <StyledCreatePage>
       <div>
         <h1>SELECT A PLACE</h1>
-        <div className="Create-main-part">
-          <Map setSelectedBounds={setSelectedBounds} />
+        <Map setSelectedBounds={setSelectedBounds} />
+        <div className="lower-part">
           <Form onSubmit={onSubmit}></Form>
+          <div className="shirt-preview">
+            <img src="/images/shirts-corners.png"></img>
+          </div>
         </div>
       </div>
     </StyledCreatePage>

@@ -14,10 +14,11 @@ export const StyledVideo = styled.div`
     height: 385px;
 
     div{
+      margin-right: 70px;
       color: white;
       position: relative;
       float: right;
-      width: 60%;
+      width: 80%;
       h2{
         float:right;
         margin: 0 0 10px 0;
@@ -37,7 +38,7 @@ export const StyledVideo = styled.div`
       }
       p {
         font-family: Source Code Pro;
-        width: 100%;
+        width: 70%;
         float: right;
         text-align: right;
       }
