@@ -4,6 +4,7 @@ import { useForm, useFormState } from "react-hook-form";
 import { Button } from "./styled/Button.styled";
 import { FormControl } from "./styled/FormControl.styled";
 import { InlineGrid } from "./styled/InlineGrid.styled";
+import Image from "next/image";
 
 export interface IFormValues {
   title: string;
@@ -99,6 +100,24 @@ export const Form: React.FC<IFormProps> = (props) => {
       {errors.description && (
         <p id="DescriptionError">{errors.description.message}</p>
       )}
+      <div className="merch-options">
+        <button>
+          <p>T-SHIRT</p>
+          <img src="/images/white-shirt.png"></img>
+        </button>
+        <button>
+          <p>MUG</p>
+          <img src="/images/white-mug.png"></img>
+        </button>
+        <select>
+          <option value="white">White</option>
+          <option value="black">Black</option>
+        </select>
+      </div>
+      <div className="form-final-buttons">
+        <Button>PREVIEW</Button>
+        <Button>Confirm</Button>
+      </div>
       <InlineGrid>
         <Button disabled={isSubmitting} onClick={onPreview} type="button">
           Preview
@@ -107,6 +126,9 @@ export const Form: React.FC<IFormProps> = (props) => {
           Continue
         </Button>
       </InlineGrid>
+      {errors.description && (
+        <p id="DescriptionError">{errors.description.message}</p>
+      )}
     </StyledForm>
   );
 };
