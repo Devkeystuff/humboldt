@@ -14,14 +14,54 @@ const StyledCreatePage = styled.div`
   padding-bottom: 10rem;
   flex-direction: column;
   gap: 5rem;
+  position: relative;
 
   .frame {
     width: 100%;
   }
+
+  .frame-container{
+    position: relative !important;
+
+    div{
+      position: absolute !important;
+      display: block !important;
+      top: 0 !important;
+      left: 50% !important;
+      margin: 0 auto !important;
+      transform: translateX(-50%) !important;
+      overflow: visible !important;
+      width: 500px;
+
+      img:nth-child(2){
+        max-height: none !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        width: 500px !important;
+        height: auto !important;
+        display: block !important;
+      }
+    }
+
+    #loading-image{
+      display: flex;
+      align-items: center;
+      font-family: Raleway;
+      justify-content: center;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%,-50%);
+      height: 576px;
+      width: 575px;
+      color: white;
+      font-size: 30px;
+    }
+  }
 `;
 
 const StyledHeader = styled.h1`
-  position: relative;
   margin: 0;
   font-family: "Raleway", sans-serif;
   font-size: 63px;
@@ -113,7 +153,7 @@ const Create: NextPage = () => {
               />
             </svg>
             {!imgPreview && isLoading ? (
-              <p>Loading image...</p>
+              <p id="loading-image">Loading image...</p>
             ) : (
               imgPreview && (
                 <Image
