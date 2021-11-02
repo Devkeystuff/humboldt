@@ -25,19 +25,18 @@ const StyledForm = styled.form`
   justify-content: space;
   margin: 0;
   font-family: Raleway;
-
-  .error {
-    position: absolute;
-    color: white;
-    margin-top: -30px;
-    &:first-child {
-      margin-left: 390px;
-    }
-  }
+  position: relative;
 
   .merch-options{
     display: flex;
     width: 100%;
+  }
+
+  .UpperErrors, #DescriptionError{
+    position: absolute;
+    font-family:Raleway;
+    color: white;
+    transition: none;
   }
 
   .type-of-merch{
@@ -221,21 +220,23 @@ export const Form: React.FC<IFormProps> = (props) => {
         />
         {errors.email && <p className="UpperErrors">{errors.email.message}</p>}
       </div>
-      <FormControl
-        id="formDescription"
-        autoComplete="off"
-        placeholder="Description"
-        {...register("description", {
-          required: "Place description is required",
-          maxLength: {
-            value: 200,
-            message: "Value longer than 255 characters",
-          },
-        })}
-      />
-      {errors.description && (
-        <p id="DescriptionError">{errors.description.message}</p>
-      )}
+      <div>
+        <FormControl
+          id="formDescription"
+          autoComplete="off"
+          placeholder="Description"
+          {...register("description", {
+            required: "Place description is required",
+            maxLength: {
+              value: 200,
+              message: "Value longer than 255 characters",
+            },
+          })}
+        />
+        {errors.description && (
+          <p id="DescriptionError">{errors.description.message}</p>
+        )}
+      </div>
       <div className="merch-options">
         <div className="type-of-merch">
           <div>
@@ -276,9 +277,6 @@ export const Form: React.FC<IFormProps> = (props) => {
           Continue
         </Button>
       </InlineGrid>
-      {errors.description && (
-        <p id="DescriptionError">{errors.description.message}</p>
-      )}
     </StyledForm>
   );
 };

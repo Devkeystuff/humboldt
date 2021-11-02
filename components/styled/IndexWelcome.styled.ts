@@ -10,7 +10,6 @@ export const StyledHero = styled.div`
 
   & div {
     width: 50%;
-
     h1{
       font-size: 90px;
       color: white;
@@ -24,6 +23,10 @@ export const StyledHero = styled.div`
         font-family: Raleway;
         font-style: italic;
       }
+    }
+
+    button{
+      margin: 10px 0 0 50px;
     }
 
     p{

@@ -6,7 +6,7 @@ export const StyledSteps = styled.div`
   font-family: Raleway;
   position: relative;
   margin 0 auto;
-  width: 70%;
+  width: 80%;
 
   h2{
     font-size: 45px;
