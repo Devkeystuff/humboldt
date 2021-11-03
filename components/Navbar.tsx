@@ -140,6 +140,7 @@ export const Navbar: React.FC<INavbarProps> = (props) => {
   useEffect(() => {
     const updateMobile = () => {
       setMobile(window.innerWidth <= 768 ? true : false)
+      setOpen(false)
     }
 
     updateMobile()
