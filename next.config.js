@@ -5,5 +5,3 @@ module.exports = {
     domains: ["humboldt-api.herokuapp.com", "localhost"],
   },
 };
-
-

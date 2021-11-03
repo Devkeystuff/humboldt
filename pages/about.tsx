@@ -6,22 +6,22 @@ import styled from "styled-components";
 
 const StyledAboutPage = styled.div`
   margin: auto 20%;
+  position: relative;
+
   h2{
-    color: white;
-    font-weight: 900;
-    width: 700px;
-    font-family: Raleway;
     font-size: 120px;
-    transition: 1s;
+    font-weight: 900;
+    font-family: Raleway;
+    text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
+    color: black;
 
     ::before{
+      width: 500px;
       content: "FUNGUS FANATICUS";
       position:absolute;
-      margin: 5px;
-      color: black;
-      text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
-      max-width: 700px;
-      z-index: -1;
+      margin: -3px;
+      color: white;
+      text-shadow: none;
     }
   }
 

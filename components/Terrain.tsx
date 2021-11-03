@@ -17,14 +17,14 @@ const Model: React.FC<ITerrainProps> = (props) => {
   return (
     <Plane
       args={[16, 16, 16, 16]}
-      rotation={[-Math.PI/2, 0, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
       position={[0, 0, 0]}
     >
       <meshStandardMaterial
         attach={"material"}
         map={texture}
         displacementScale={2}
-        normalMap={normal}
+        // normalMap={normal}
         displacementMap={elevation}
         metalness={0}
       />
@@ -37,7 +37,7 @@ const Terrain: React.FC<ITerrainProps> = (props) => {
     <Canvas
       draggable={false}
       color={"black"}
-      camera={{ zoom: 3, position: [24, 16, 16]}}
+      camera={{ zoom: 3, position: [24, 16, 16] }}
     >
       <pointLight
         castShadow
