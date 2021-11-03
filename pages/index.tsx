@@ -3,6 +3,7 @@ import { StyledHero } from "../components/styled/IndexWelcome.styled";
 import { StyledVideo } from "../components/styled/IndexVideo.styled";
 import { StyledSteps } from "../components/styled/IndexSteps.styled";
 import { Button } from "../components/styled/Button.styled";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
@@ -22,7 +23,9 @@ const Home: NextPage = () => {
             Order uniquely designed merch to represent the place you have
             travelled to.
           </p>
-          <Button>Create</Button>
+          <Link href={"/create"} passHref>
+            <Button>CREATE</Button>
+          </Link>
         </div>
       </StyledHero>
 
