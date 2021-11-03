@@ -11,13 +11,13 @@ interface ITerrainProps {
 const Model: React.FC<ITerrainProps> = (props) => {
   // TODO: Load
   const texture = useLoader(THREE.TextureLoader, "/mountains.png");
-  const elevation = useLoader(THREE.TextureLoader, "/height.png");
+  const elevation = useLoader(THREE.TextureLoader, props.elevation_img);
   const normal = useLoader(THREE.TextureLoader, "/normalmap.png");
 
   return (
     <Plane
       args={[16, 16, 16, 16]}
-      rotation={[-Math.PI / 2, 0, 0]}
+      rotation={[-Math.PI/2, 0, 0]}
       position={[0, 0, 0]}
     >
       <meshStandardMaterial
@@ -37,7 +37,7 @@ const Terrain: React.FC<ITerrainProps> = (props) => {
     <Canvas
       draggable={false}
       color={"black"}
-      camera={{ zoom: 1, position: [16, 0, 16] }}
+      camera={{ zoom: 3, position: [24, 16, 16]}}
     >
       <pointLight
         castShadow

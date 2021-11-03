@@ -16,13 +16,11 @@ export const StyledDesc = styled.div`
 
     hr {
         margin: 35px 0 35px 0;
-        float: left;
         width: 300px;
         border: 1px solid #AAD725;
     }
 
-    p {
-        float: left;
+    p { 
         font-family: Source Code Pro;
         color: white;
         margin: 0;
@@ -41,7 +39,8 @@ export const StyledDesc = styled.div`
 
         p {
             text-align: justify;
-            padding: 0 25px;s
+            padding: 0 25px;
+            text-align: center;
         }
 
         hr {
