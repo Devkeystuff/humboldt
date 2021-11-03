@@ -23,7 +23,7 @@ const Model: React.FC<ITerrainProps> = (props) => {
       <meshStandardMaterial
         attach={"material"}
         map={texture}
-        displacementScale={2}
+        displacementScale={200}
         // normalMap={normal}
         displacementMap={elevation}
         metalness={0}
