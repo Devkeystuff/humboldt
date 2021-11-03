@@ -65,7 +65,6 @@ const StyledPlace = styled.div`
 
     .terrain-model {
       order: 1;
-      margin: 35px auto 75px auto;
       width: 90%;
     }
 
@@ -134,24 +133,20 @@ const Place: NextPage<IPlaceProps> = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { uuid } = context.query;
-  // const placeInfo: IResponseGetDesign = await HttpController.getPlace(uuid);
-  const { data } = await axios.post(
-    `http://localhost:8000/get_design?design_uuid=${uuid}&api_key=3c857823-ba57-43c9-8a03-70d3d618bef0`
-  );
+  const placeInfo: IResponseGetDesign = await HttpController.getPlace(uuid);
 
-  // if (!placeInfo) {
-  //   return {
-  //     redirect: {
-  //       destination: "/",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
-  // console.log(placeInfo);
+  if (!placeInfo) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
-      data,
+      placeInfo,
     },
   };
 };

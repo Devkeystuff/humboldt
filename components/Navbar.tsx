@@ -34,9 +34,8 @@ const StyledNav = styled.nav`
         transition: width .3s;
       }
 
-      &:hover::after{
-        width:100%;
-      }
+    &:hover::after {
+      width: 100%;
     }
   }
 
@@ -95,7 +94,7 @@ const StyledNav = styled.nav`
         font-family: Raleway;
         font-style: italic;
         font-weight: 900;
-        color: #AAD725;
+        color: #aad725;
         margin: auto 0;
         height: 50%;
         cursor: pointer;
@@ -120,7 +119,7 @@ const StyledNav = styled.nav`
           width: 34px;
           height: 4px;
           margin: 6px auto;
-          background-color: #AAD725;
+          background-color: #aad725;
         }
       }
     }
@@ -131,7 +130,7 @@ const StyledLink = styled.a<IStyledLinkProps>`
   color: ${({ isActive, theme }) => (isActive ? theme.colors.accent : "#fff")};
 `;
 
-interface INavbarProps { }
+interface INavbarProps {}
 
 export const Navbar: React.FC<INavbarProps> = (props) => {
   const [open, setOpen] = useState(true);
@@ -183,7 +182,7 @@ export const Navbar: React.FC<INavbarProps> = (props) => {
 
   return (
     <StyledNav>
-      <div className="grid-el" id="logo-container" >
+      <div className="grid-el" id="logo-container">
         <Link href="/" passHref>
           <h1 id="logo">humboldt.</h1>
         </Link>
@@ -199,4 +198,3 @@ export const Navbar: React.FC<INavbarProps> = (props) => {
     </StyledNav>
   );
 };
-
