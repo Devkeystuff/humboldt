@@ -118,7 +118,10 @@ const Create: NextPage = () => {
   return (
     <StyledCreatePage>
       <StyledHeader>SELECT A PLACE</StyledHeader>
-      <Map setSelectedBounds={setSelectedBounds} />
+      <Map
+        selectedBounds={selectedBounds}
+        setSelectedBounds={setSelectedBounds}
+      />
       <InlineGrid>
         <Form onSubmit={onSubmit} setIsLoading={setIsLoading} />
         <div className="image-demo">

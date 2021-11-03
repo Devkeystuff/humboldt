@@ -12,6 +12,9 @@ const markerCenter = new L.Icon({
 
 interface IAreaSelectProps {
   center0: LatLng;
+  color: string;
+  selectedColor: string;
+  selectTrigger: any;
   onNewBounds: (bounds: LatLngBounds) => void;
 }
 
@@ -19,6 +22,12 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (
   props: IAreaSelectProps
 ) => {
   const circleRef: Ref<L.Circle<any>> = useRef<L.Circle<any>>(null);
+
+  const [isSelected, setIsSelected] = useState(false);
+  const selectTrigger = props.selectTrigger;
+  useEffect(() => {
+    setIsSelected(true);
+  }, [selectTrigger]);
 
   const [center, setCenter] = useState<LatLng>(
     new LatLng(props.center0.lat, props.center0.lng)
@@ -31,6 +40,7 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (
   // React missing dependency workaround
   const onNewBounds = props.onNewBounds;
   useEffect(() => {
+    if (isSelected) setIsSelected(false);
     const newBounds = circleRef.current?.getBounds();
     const width = newBounds.getNorthWest().lng - newBounds.getSouthEast().lng;
     const actualBounds = new LatLngBounds(
@@ -43,6 +53,7 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (
     }
   }, [center, onNewBounds]);
 
+  const cursorColor = isSelected ? props.selectedColor : props.color;
   return (
     <LayerGroup>
       <Marker
@@ -55,12 +66,11 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (
           },
         }}
       />
-
       <Rectangle
         bounds={bounds}
         pathOptions={{
           weight: 3,
-          color: "#AAD725",
+          color: cursorColor,
         }}
       />
       <Circle

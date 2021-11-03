@@ -7,6 +7,7 @@ import { Button } from "./styled/Button.styled";
 
 interface IMapProps {
   setSelectedBounds: (bounds: LatLngBounds) => void;
+  selectedBounds: LatLngBounds;
 }
 
 const Map: React.FC<IMapProps & GeolocatedProps> = (props) => {
@@ -41,6 +42,9 @@ const Map: React.FC<IMapProps & GeolocatedProps> = (props) => {
         <LayerAreaSelect
           center0={new LatLng(props.coords.latitude, props.coords.longitude)}
           onNewBounds={setBounds}
+          selectTrigger={props.selectedBounds}
+          selectedColor={"#AAD725"}
+          color={"#fff"}
         />
       </MapContainer>
       <Button isMapButton onClick={() => props.setSelectedBounds(bounds)}>
