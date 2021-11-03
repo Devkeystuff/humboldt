@@ -64,7 +64,6 @@ const StyledPlace = styled.div`
 
     .terrain-model {
       order: 1;
-      margin: 35px auto 75px auto;
       width: 90%;
     }
 
