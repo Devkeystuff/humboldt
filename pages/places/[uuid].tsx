@@ -135,7 +135,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { uuid } = context.query;
   // const placeInfo: IResponseGetDesign = await HttpController.getPlace(uuid);
   const { data } = await axios.post(
-    `http://localhost:8000/get_design?design_uuid=${uuid}&api_key=3c857823-ba57-43c9-8a03-70d3d618bef0`
+    `${process.env.NEXT_PUBLIC_HOST}/get_design?design_uuid=${uuid}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`
   );
 
   // if (!placeInfo) {
