@@ -61,10 +61,10 @@ const StyledPlace = styled.div`
     margin: 0 auto;
     flex-flow: column nowrap;
     align-items: center;
+    
 
     .terrain-model {
       order: 1;
-      margin: 35px auto 75px auto;
       width: 90%;
     }
 

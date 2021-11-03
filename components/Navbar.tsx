@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -10,7 +10,7 @@ interface IStyledLinkProps {
 const StyledNav = styled.nav`
   display: grid;
 
-  ul {
+  #desktop-buttons {
     display: flex;
     height: 80px;
     list-style: none;
@@ -21,18 +21,18 @@ const StyledNav = styled.nav`
     margin: auto;
   }
 
-  li {
-    text-transform: uppercase;
-    font-family: "Source Code Pro", sans-serif;
+  #desktop-buttons li {
+      text-transform: uppercase;
+      font-family: "Source Code Pro", sans-serif;
 
-    &::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 2px;
-      background: #aad725;
-      transition: width 0.3s;
-    }
+      &::after{
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #AAD725;
+        transition: width .3s;
+      }
 
     &:hover::after {
       width: 100%;
@@ -48,8 +48,42 @@ const StyledNav = styled.nav`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     justify-content: space-between;
-    ul {
+
+    #desktop-buttons {
       display: none;
+    }
+
+    #mobile-buttons {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      margin: auto;
+      grid-column: 1/3;
+      grid-row: 2;
+      width: 100%;
+      overflow: hidden;
+      text-transform: uppercase;
+      font-family: "Source Code Pro", sans-serif;
+
+      li {
+        text-align: center;
+        width: 100%;
+        height: 2rem;
+
+        &::after{
+          content: '';
+          display: block;
+          width: 0;
+          height: 2px;
+          background: #AAD725;
+          transition: width .3s;
+        }
+  
+        &:hover::after{
+          width:100%;
+        }
+      }
     }
 
     #logo-container {
@@ -99,7 +133,54 @@ const StyledLink = styled.a<IStyledLinkProps>`
 interface INavbarProps {}
 
 export const Navbar: React.FC<INavbarProps> = (props) => {
+  const [open, setOpen] = useState(true);
+  const [mobile, setMobile] = useState(undefined)
   const router = useRouter();
+
+  useEffect(() => {
+    const updateMobile = () => {
+      setMobile(window.innerWidth <= 768 ? true : false)
+      setOpen(false)
+    }
+
+    updateMobile()
+    window.addEventListener('resize', updateMobile)
+    return () => {
+      window.removeEventListener('resize', updateMobile)
+    }
+  }, [])
+
+
+  let respUl =
+    <ul style={{ display: !mobile ? "flex" : open ? "flex" : "none" }} id={mobile ? "mobile-buttons" : "desktop-buttons"}>
+      <li>
+        <Link href="/" passHref>
+          <StyledLink isActive={router.pathname == "/"}>Home</StyledLink>
+        </Link>
+      </li>
+      <li>
+        <Link href="/create" passHref>
+          <StyledLink isActive={router.pathname == "/create"}>
+            Create
+          </StyledLink>
+        </Link>
+      </li>
+      <li>
+        <Link href="/places" passHref>
+          <StyledLink isActive={router.pathname == "/places"}>
+            Places
+          </StyledLink>
+        </Link>
+      </li>
+      <li>
+        <Link href="/about" passHref>
+          <StyledLink isActive={router.pathname == "/about"}>
+            About
+          </StyledLink>
+        </Link>
+      </li>
+    </ul>
+
   return (
     <StyledNav>
       <div className="grid-el" id="logo-container">
@@ -107,41 +188,14 @@ export const Navbar: React.FC<INavbarProps> = (props) => {
           <h1 id="logo">humboldt.</h1>
         </Link>
       </div>
-      <div className="grid-el" id="hamburger-container">
-        <div onClick={() => {}} className="hamburger">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+      <div className="grid-el" id="hamburger-container" >
+        <div onClick={() => setOpen(!open)} className="hamburger">
+          <div className="bar 1"></div>
+          <div className="bar 2"></div>
+          <div className="bar 3"></div>
         </div>
       </div>
-      <ul>
-        <li>
-          <Link href="/" passHref>
-            <StyledLink isActive={router.pathname == "/"}>Home</StyledLink>
-          </Link>
-        </li>
-        <li>
-          <Link href="/create" passHref>
-            <StyledLink isActive={router.pathname == "/create"}>
-              Create
-            </StyledLink>
-          </Link>
-        </li>
-        <li>
-          <Link href="/places" passHref>
-            <StyledLink isActive={router.pathname == "/places"}>
-              Places
-            </StyledLink>
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" passHref>
-            <StyledLink isActive={router.pathname == "/about"}>
-              About
-            </StyledLink>
-          </Link>
-        </li>
-      </ul>
+      {respUl}
     </StyledNav>
   );
 };

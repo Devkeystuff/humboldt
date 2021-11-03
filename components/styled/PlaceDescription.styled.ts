@@ -35,17 +35,18 @@ export const StyledDesc = styled.div`
     
     h1 {
       text-align: center;
-      font-size: 75px;
+      font-size: 34px;
     }
 
     p {
       text-align: justify;
+      font-size: 14px;
       padding: 0 25px;
       text-align: center;
     }
 
     hr {
-      width: 100%;
+      display: none;
     }
 
   }
