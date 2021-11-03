@@ -11,7 +11,7 @@ interface ITerrainProps {
 const Model: React.FC<ITerrainProps> = (props) => {
   // TODO: Load
   const texture = useLoader(THREE.TextureLoader, "/mountains.png");
-  const elevation = useLoader(THREE.TextureLoader, "/height.png");
+  const elevation = useLoader(THREE.TextureLoader, props.elevation_img);
   const normal = useLoader(THREE.TextureLoader, "/normalmap.png");
 
   return (
@@ -24,7 +24,7 @@ const Model: React.FC<ITerrainProps> = (props) => {
         attach={"material"}
         map={texture}
         displacementScale={2}
-        normalMap={normal}
+        // normalMap={normal}
         displacementMap={elevation}
         metalness={0}
       />
@@ -37,7 +37,7 @@ const Terrain: React.FC<ITerrainProps> = (props) => {
     <Canvas
       draggable={false}
       color={"black"}
-      camera={{ zoom: 1, position: [16, 0, 16] }}
+      camera={{ zoom: 3, position: [24, 16, 16] }}
     >
       <pointLight
         castShadow

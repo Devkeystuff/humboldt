@@ -7,6 +7,7 @@ import { Button } from "./styled/Button.styled";
 
 interface IMapProps {
   setSelectedBounds: (bounds: LatLngBounds) => void;
+  selectedBounds: LatLngBounds;
 }
 
 const Map: React.FC<IMapProps & GeolocatedProps> = (props) => {
@@ -23,12 +24,10 @@ const Map: React.FC<IMapProps & GeolocatedProps> = (props) => {
         center={[props.coords.latitude, props.coords.longitude]}
         style={{
           zIndex: 1,
-          width: "40vw",
-          height: "70vh",
+          height: "60vh",
           minHeight: "500px",
-          margin: "0 50px",
           boxShadow: "0px 8px 100px 0px rgba(0, 0, 0, 0.226)",
-          borderRadius: "10px"
+          borderRadius: "10px",
         }}
         zoom={6}
         scrollWheelZoom={true}
@@ -43,6 +42,9 @@ const Map: React.FC<IMapProps & GeolocatedProps> = (props) => {
         <LayerAreaSelect
           center0={new LatLng(props.coords.latitude, props.coords.longitude)}
           onNewBounds={setBounds}
+          selectTrigger={props.selectedBounds}
+          selectedColor={"#AAD725"}
+          color={"#fff"}
         />
       </MapContainer>
       <Button isMapButton onClick={() => props.setSelectedBounds(bounds)}>

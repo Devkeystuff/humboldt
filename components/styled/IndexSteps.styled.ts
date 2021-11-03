@@ -5,9 +5,10 @@ export const StyledSteps = styled.div`
   color: white;
   font-family: Raleway;
   position: relative;
+  margin 0 auto;
+  width: 80%;
 
   h2{
-    margin: 0 5vw 50px 15.5%;
     font-size: 45px;
     font-weight: 900;
     text-shadow: -1px -1px 0 #AAD725, 1px -1px 0 #AAD725, -1px 1px 0 #AAD725, 1px 1px 0 #AAD725;
@@ -24,23 +25,38 @@ export const StyledSteps = styled.div`
   }
 
   .StepsDiv{
-    margin-top: 20px;
+    margin-top: 50px;
     padding: 0px 0 150px 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
     div{
       background-color: gray;
-      width: 350px;
+      display: flex;
+      flex-direction: column;
+      width: 26%;
       height: 500px;
-      margin: 5px 70px 0 70px;
       background: linear-gradient(150deg, rgba(255, 255, 255, 0.4), rgba(255,255,255, 0.1));
       border: 3px solid rgba(255, 255, 255, 0.34);
       border-radius: 10px;
       filter: opacity(100%);
 
+      img{
+        width:90px;
+        height:90px;
+        margin: 100px auto 20px;
+      }
       p{
-        mix-blend-mode: overlay;
+        margin: 10px auto;
+        width: 70%;
+        text-align: center;
+        font-size: 20px;
+      }
+      .steps-tutorial{
+        font-family: Source Code Pro;
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.34);
       }
     }
   }
