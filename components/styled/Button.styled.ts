@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface IButtonProps {
   isMapButton?: boolean;
+  centered?: boolean;
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -18,7 +19,8 @@ export const Button = styled.button<IButtonProps>`
   border-radius: 10px;
   outline: none;
   display: block;
-  margin: ${({ isMapButton }) => !isMapButton ? '0 0' : '20px auto'};
+  margin: ${({ centered }) => !centered ? '0 0' : '0 auto'};
+  margin: ${({ isMapButton }) => !isMapButton ? 'inherit inherit' : '20px auto'};
   cursor: pointer;
   transform: translate(0, -${({ isMapButton }) => isMapButton ? 50 : 0}%);
   box-shadow: 0 8px 20px 0 ${({ theme }) => theme.colors.accentShadow};

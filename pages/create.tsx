@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from "next";
 import styled from "styled-components";
 import { useMemo, useState } from "react";
@@ -8,6 +9,12 @@ import { InlineGrid } from "../components/styled/InlineGrid.styled";
 import Image from "next/image";
 import HttpController from "../controllers/HttpController";
 import IRequestCreateDesign from "../types/RequestCreateDesign.type";
+import { Button } from "../components/styled/Button.styled";
+
+interface IDisplayProps {
+  previewImg: string;
+  modelUrl: string;
+}
 
 const StyledCreatePage = styled.div`
   display: flex;
@@ -19,11 +26,23 @@ const StyledCreatePage = styled.div`
   .frame {
     width: 100%;
   }
+  .image-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-  .frame-container{
+  .frame-container {
     position: relative !important;
+    .shirt-img {
+      position: absolute;
+      height: 100%;
 
-    div{
+      left: 50%;
+      transform: translate(-50%);
+      top: 0;
+    }
+    /* div {
       position: absolute !important;
       display: block !important;
       top: 0 !important;
@@ -33,7 +52,7 @@ const StyledCreatePage = styled.div`
       overflow: visible !important;
       width: 500px;
 
-      img:nth-child(2){
+      img:nth-child(2) {
         max-height: none !important;
         max-width: none !important;
         margin: 0 auto !important;
@@ -41,9 +60,9 @@ const StyledCreatePage = styled.div`
         height: auto !important;
         display: block !important;
       }
-    }
+    } */
 
-    #loading-image{
+    #loading-image {
       display: flex;
       align-items: center;
       font-family: Raleway;
@@ -52,7 +71,7 @@ const StyledCreatePage = styled.div`
       top: 45%;
       left: 50%;
       text-align: center;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       height: 576px;
       width: 575px;
       color: white;
@@ -94,7 +113,7 @@ const Create: NextPage = () => {
   );
 
   const [selectedBounds, setSelectedBounds] = useState<LatLngBounds>();
-  const [imgPreview, setImgPreview] = useState<string>("");
+  const [displayProps, setDisplayProps] = useState<IDisplayProps>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onSubmit = async (data: IFormValues, preview: boolean) => {
@@ -112,7 +131,12 @@ const Create: NextPage = () => {
       south: selectedBounds.getSouth(),
     };
     const res = await HttpController.generateDesign(design);
-    setImgPreview(res.shirt_img);
+
+    setDisplayProps({
+      modelUrl: `http://humboldtapparel.herokuapp.com/places/${res.design_uuid}`,
+      previewImg: res.shirt_img,
+    });
+    setIsLoading(false);
   };
 
   return (
@@ -155,19 +179,24 @@ const Create: NextPage = () => {
                 strokeWidth="18"
               />
             </svg>
-            {!imgPreview && isLoading ? (
+            {!displayProps && isLoading ? (
               <p id="loading-image">Loading image...</p>
             ) : (
-              imgPreview && (
-                <Image
-                  width={1952}
-                  height={2631}
-                  src={imgPreview}
+              !isLoading &&
+              displayProps && (
+                <img
+                  className="shirt-img"
+                  src={displayProps.previewImg}
                   alt={"Shirt design demonstration"}
                 />
               )
             )}
           </div>
+          {displayProps && (
+            <a href={displayProps.modelUrl}>
+              <Button centered>View place model</Button>
+            </a>
+          )}
         </div>
       </InlineGrid>
     </StyledCreatePage>
