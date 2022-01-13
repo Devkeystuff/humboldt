@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  api:
+    build: ./api
+    container_name: humboldt-api
+    restart: always
+    command: python -m uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api/:/usr/src/app
+      - media:/usr/src/app/media
+      - static:/usr/src/app/static
+    env_file:
+      - ./.env.local
+    depends_on:
+      - redis
+      - db
+  redis:
+    image: redis:6.2.6-alpine
+    container_name: humboldt-cache
+    volumes:
+      - redis_data:/var/lib/redis/data
+    ports:
+      - 6379:6379
+  db:
+    image: postgres:14.1-alpine
+    container_name: humboldt-dev-db
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env.local
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  nginx:
+    build: ./nginx
+    container_name: humboldt-nginx
+    volumes:
+      - media:/usr/src/app/media
+      - static:/usr/src/app/static
+    ports:
+      - 8080:80
+    restart: always
+    depends_on:
+      - api
+      - redis
+
+volumes:
+  postgres_data:
+  redis_data:
+  media:
+  static:
