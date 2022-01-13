@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn install
+conda env update -n humboldt --file ./api/environment.yml
+conda activate humboldt
