@@ -8,11 +8,17 @@
 
 ## Installation
 
+### [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+
+We're using yarn as our project package manager
+
+    npm i -g yarn
+
 ### [Git LFS](https://git-lfs.github.com/)
 
-> "Replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git"
+"Replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git"
 
-\- Official Docs
+_\- Official Docs_
 
 ### [Node](https://nodejs.org/en/download/)
 
