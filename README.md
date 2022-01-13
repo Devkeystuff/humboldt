@@ -14,13 +14,15 @@
 
 \- Official Docs
 
-### [NPM]
+### [Node](https://nodejs.org/en/download/)
+
+Use node v16.13.2 or latest release
 
 ### [Conda](https://www.anaconda.com/products/individual)
 
 For managing python environments
 
-Gets created automatically using `just setup` (More on just in [Commands]("#commands") section)
+Gets created automatically using `just setup` (More on just in [Commands](#commands) section)
 
 ### [Cargo](https://www.rust-lang.org/)
 
@@ -38,7 +40,7 @@ For running automated scripts that make the development process easier
 
 Project is containerized. For more details look into `docker-compose.yml` in the root directory
 
-> IMPORTANT NOTICE: For windows you must have a [WSL2]("https://docs.microsoft.com/en-us/windows/wsl/install") set up!
+> IMPORTANT NOTICE: For windows you must have a [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install) set up!
 
 ## Commands
 
