@@ -1,3 +1,4 @@
+# Comment out this line if you're using Linux or MacOS
 set shell := ["cmd.exe", "/c"]
 
 setup:
