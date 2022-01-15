@@ -24,12 +24,6 @@ _\- Official Docs_
 
 Use node v16.13.2 or latest release
 
-### [Conda](https://www.anaconda.com/products/individual)
-
-For managing python environments
-
-Gets created automatically using `just setup` (More on just in [Commands](#commands) section)
-
 ### [Cargo](https://www.rust-lang.org/)
 
 For managing packages, but in our case we just want Just
