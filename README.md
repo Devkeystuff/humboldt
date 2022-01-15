@@ -32,7 +32,7 @@ Gets created automatically using `just setup` (More on just in [Commands](#comma
 
 ### [Cargo](https://www.rust-lang.org/)
 
-For managing packages, in our case...
+For managing packages, but in our case we just want Just
 
 #### [Just](https://github.com/casey/just)
 
@@ -44,9 +44,23 @@ For running automated scripts that make the development process easier
 
 #### And [docker-compose](https://docs.docker.com/compose/install/) if running on linux
 
-Project is containerized. For more details look into `docker-compose.yml` in the root directory
+#### Installation on Windows
 
-> IMPORTANT NOTICE: For windows you must have a [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install) set up!
+1.  Get [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install) and initialize Ubuntu distro using
+
+        wsl --install -d Ubuntu
+
+    And complete the setup process in terminal
+
+2.  Get Docker Desktop and during installation, make sure to check this field
+
+![Check this field](./public/docker_install.png)
+
+3. After installation, run `wsl -l`, if installation was successful, you should see something like this
+
+![Successful installation](./public/wsl.png)
+
+4. Start Docker Desktop and you're good to go!
 
 ## Commands
 
