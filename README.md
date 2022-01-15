@@ -1,8 +1,6 @@
 [![Commitizen friendly](https://shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-![](./public/humboldt.png)
-
-# Humboldt
+# ![](./public/humboldt.png) **Humboldt**
 
 ## Clone
 
