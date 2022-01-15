@@ -4,9 +4,9 @@ channels:
 dependencies:
   - bzip2=1.0.8=he774522_0
   - ca-certificates=2021.10.26=haa95532_2
-  - certifi=2021.5.30=py310haa95532_0
+  - certifi=2020.6.20=pyhd3eb1b0_3
   - libffi=3.4.2=h604cdb4_1
-  - openssl=1.1.1l=h2bbff1b_0
+  - openssl=1.1.1m=h2bbff1b_0
   - pip=21.2.4=py310haa95532_0
   - python=3.10.0=h96c0403_3
   - setuptools=58.0.4=py310haa95532_0
@@ -20,42 +20,41 @@ dependencies:
   - xz=5.2.5=h62dcd97_0
   - zlib=1.2.11=h8cc25b3_4
   - pip:
-      - anyio==3.5.0
-      - asgiref==3.4.1
-      - astroid==2.9.3
-      - black==21.12b0
-      - charset-normalizer==2.0.10
-      - click==8.0.3
-      - colorama==0.4.4
-      - dacite==1.6.0
-      - dataclasses-json==0.5.6
-      - fastapi==0.71.0
-      - h11==0.12.0
-      - idna==3.3
-      - isort==5.10.1
-      - lazy-object-proxy==1.7.1
-      - marshmallow==3.14.1
-      - marshmallow-enum==1.5.1
-      - mccabe==0.6.1
-      - mypy-extensions==0.4.3
-      - numpy==1.22.0
-      - opencv-python==4.5.5.62
-      - pathspec==0.9.0
-      - pillow==9.0.0
-      - platformdirs==2.4.1
-      - psycopg2==2.9.3
-      - pydantic==1.9.0
-      - pylint==2.12.2
-      - python-dotenv==0.19.2
-      - qrcode==7.3.1
-      - requests==2.27.1
-      - sniffio==1.2.0
-      - starlette==0.17.1
-      - textwrap3==0.9.2
-      - toml==0.10.2
-      - tomli==1.2.3
-      - typing-extensions==4.0.1
-      - typing-inspect==0.7.1
-      - urllib3==1.26.8
-      - uvicorn==0.16.0
-      - wrapt==1.13.3
+    - anyio==3.5.0
+    - asgiref==3.4.1
+    - astroid==2.9.3
+    - charset-normalizer==2.0.10
+    - click==8.0.3
+    - colorama==0.4.4
+    - dacite==1.6.0
+    - dataclasses-json==0.5.6
+    - fastapi==0.71.0
+    - h11==0.12.0
+    - idna==3.3
+    - isort==5.10.1
+    - lazy-object-proxy==1.7.1
+    - marshmallow==3.14.1
+    - marshmallow-enum==1.5.1
+    - mccabe==0.6.1
+    - mypy-extensions==0.4.3
+    - numpy==1.22.1
+    - opencv-python==4.5.5.62
+    - pillow==9.0.0
+    - platformdirs==2.4.1
+    - psycopg2==2.9.3
+    - psycopg2-binary==2.9.3
+    - pydantic==1.9.0
+    - pylint==2.12.2
+    - python-dotenv==0.19.2
+    - qrcode==7.3.1
+    - requests==2.27.1
+    - sniffio==1.2.0
+    - starlette==0.17.1
+    - textwrap3==0.9.2
+    - toml==0.10.2
+    - typing-extensions==4.0.1
+    - typing-inspect==0.7.1
+    - urllib3==1.26.8
+    - uvicorn==0.17.0
+    - wrapt==1.13.3
+prefix: d:\ProgramData\Anaconda\envs\humboldt

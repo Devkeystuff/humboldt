@@ -1,9 +1,10 @@
-setup:
-	cd app && yarn install
-	cd api && conda env update -n humboldt --file environment.yml
-	npm i commitizen -g
-	just conda
+set shell := ["cmd.exe", "/c"]
 
+setup:
+	yarn install
+	cd app && yarn install
+	npm i commitizen -g
+	cd api && conda env update -n humboldt --file environment.yml
 
 dev:
 	docker-compose up -d
@@ -18,6 +19,3 @@ format:
 
 commit:
 	cz
-
-conda:
-	start conda activate humboldt
