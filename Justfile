@@ -5,7 +5,7 @@ setup:
 	yarn install
 	cd app && yarn install
 	npm i commitizen -g
-	cd api && conda env update -n humboldt --file environment.yml
+	cd api && python -m venv env
 
 dev:
 	docker-compose up -d
