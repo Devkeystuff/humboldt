@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint **/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
     "@react-three/drei": "^7.14.2",
     "@react-three/fiber": "^7.0.9",
     "@types/node": "^16.10.4",
-    "@types/styled-components": "^5.1.14",
+    "@types/styled-components": "^5.1.20",
     "axios": "^0.23.0",
     "geotiff": "^1.0.7",
     "leaflet": "^1.7.1",
@@ -23,7 +24,7 @@
     "react-geolocated": "^3.2.0",
     "react-hook-form": "^7.17.4",
     "react-leaflet": "^3.2.1",
-    "styled-components": "^5.3.1",
+    "styled-components": "^5.3.3",
     "three": "^0.133.1"
   },
   "devDependencies": {

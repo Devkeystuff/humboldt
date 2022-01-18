@@ -40,10 +40,9 @@ const GlobalStyles = createGlobalStyle`
     display: none;
   }
   main {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-
 `;
 
 export default GlobalStyles;

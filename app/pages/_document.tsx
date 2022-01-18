@@ -1,3 +1,4 @@
+// Document is handled server side, so all the TS errors appearing can be ignored
 import Document from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';

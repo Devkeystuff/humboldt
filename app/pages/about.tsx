@@ -1,6 +1,4 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
 import styled from 'styled-components';
 
 const StyledAboutPage = styled.div`
@@ -39,9 +37,6 @@ const StyledAboutPage = styled.div`
       flex-direction: column;
       width: 300px;
       padding: 0;
-      /*background-color: black;
-      border-radius: 10px;
-      box-shadow: 0px 0px 30px 10px rgb(116, 185, 147, 0.26);*/
       li {
         list-style: none;
         font-size: 20px;

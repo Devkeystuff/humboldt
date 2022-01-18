@@ -1,11 +1,10 @@
-import axios from 'axios';
 import { GetServerSideProps, NextPage } from 'next';
-import { useEffect } from 'react';
 import Terrain from '../../components/Terrain';
 import HttpController from '../../controllers/HttpController';
 import IResponseGetDesign from '../../types/ResponseGetDesign.type';
 import { StyledDesc } from '../../components/styled/PlaceDescription.styled';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 const StyledPlace = styled.div`
   width: 80vw;
@@ -116,7 +115,7 @@ const Place: NextPage<IPlaceProps> = props => {
       </StyledDesc>
       <div className="qrcode-container">
         <div className="qrcode-img">
-          <img id="qrcode" src={props.placeInfo.qr_code_img} alt="qrcode" />
+          <Image id="qrcode" src={props.placeInfo.qr_code_img} alt="qrcode" />
         </div>
         <div className="qrcode-description">
           <h2>{props.placeInfo.edition_title}</h2>

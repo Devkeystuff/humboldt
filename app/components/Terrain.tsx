@@ -12,7 +12,6 @@ const Model: React.FC<ITerrainProps> = props => {
   // TODO: Load
   const texture = useLoader(THREE.TextureLoader, '/mountains.png');
   const elevation = useLoader(THREE.TextureLoader, props.elevation_img);
-  const normal = useLoader(THREE.TextureLoader, '/normalmap.png');
 
   return (
     <Plane args={[16, 16, 16, 16]} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>

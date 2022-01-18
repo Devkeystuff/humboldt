@@ -6,12 +6,14 @@ import IResponseCreateDesign from '../types/ResponseCreateDesign.type';
 
 export default class HttpController {
   static getPlace = async (uuid: string | string[] | undefined): Promise<IResponseGetDesign> => {
-    let response: IResponseGetDesign = null;
+    let response = {
+      is_success: false,
+    } as IResponseGetDesign;
     try {
       if (typeof uuid === 'string') {
         const params: IRequestGetDesign = {
           design_uuid: uuid,
-          api_key: process.env.NEXT_PUBLIC_API_KEY,
+          api_key: process.env.NEXT_PUBLIC_API_KEY || '',
         };
         const { data } = await http.post<IResponseGetDesign>(
           `${process.env.NEXT_PUBLIC_HOST}/get_design?design_uuid=${params.design_uuid}&api_key=${params.api_key}`,
@@ -25,7 +27,9 @@ export default class HttpController {
   };
 
   static generateDesign = async (design: IRequestCreateDesign): Promise<IResponseCreateDesign> => {
-    let response: IResponseCreateDesign = null;
+    let response = {
+      is_success: false,
+    } as IResponseCreateDesign;
     try {
       console.log(design);
       const url = `${process.env.NEXT_PUBLIC_HOST}/generate_design?title=${design.title}&description=${design.description}&is_preview=${design.is_preview}&south=${design.south}&north=${design.north}&west=${design.west}&east=${design.east}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`;

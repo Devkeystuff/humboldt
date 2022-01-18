@@ -1,7 +1,7 @@
 import GlobalStyles from '../components/styled/Global';
 import '../styles/globals.scss';
 import { ThemeProvider } from 'styled-components';
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { Layout } from '../components/Layout';
 import { HeadFilled } from '../components/Head';
 

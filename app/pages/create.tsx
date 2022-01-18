@@ -1,17 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import styled from 'styled-components';
-import { useMemo, useState } from 'react';
-import { LatLng, LatLngBounds } from 'leaflet';
+import React, { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Form, IFormValues } from '../components/Form';
 import { InlineGrid } from '../components/styled/InlineGrid.styled';
-import Image from 'next/image';
 import HttpController from '../controllers/HttpController';
 import IRequestCreateDesign from '../types/RequestCreateDesign.type';
 import { Button } from '../components/styled/Button.styled';
+import { latLng, LatLngBounds, latLngBounds } from 'leaflet';
 
-interface IDisplayProps {
+interface DisplayProps {
   previewImg: string;
   modelUrl: string;
 }
@@ -42,25 +41,6 @@ const StyledCreatePage = styled.div`
       transform: translate(-50%);
       top: 0;
     }
-    /* div {
-      position: absolute !important;
-      display: block !important;
-      top: 0 !important;
-      left: 50% !important;
-      margin: 0 auto !important;
-      transform: translateX(-50%) !important;
-      overflow: visible !important;
-      width: 500px;
-
-      img:nth-child(2) {
-        max-height: none !important;
-        max-width: none !important;
-        margin: 0 auto !important;
-        width: 500px !important;
-        height: auto !important;
-        display: block !important;
-      }
-    } */
 
     #loading-image {
       display: flex;
@@ -103,6 +83,7 @@ const StyledHeader = styled.h1`
 const Create: NextPage = () => {
   // Disable SSR for Map component
   // useMemo() disables unnecessary component updates which could cause Map flickering
+
   const Map = useMemo(
     () =>
       dynamic(() => import('../components/Map'), {
@@ -112,39 +93,41 @@ const Create: NextPage = () => {
     [],
   );
 
-  const [selectedBounds, setSelectedBounds] = useState<LatLngBounds>(
-    new LatLngBounds(new LatLng(0, 0), new LatLng(0, 0)), // TODO: set to null and validate if user has selected bounds
-  );
-  const [displayProps, setDisplayProps] = useState<IDisplayProps>();
+  const [selectedBounds, setSelectedBounds] = useState<LatLngBounds | null>(null);
+  const [displayProps, setDisplayProps] = useState<DisplayProps>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onSubmit = async (data: IFormValues, preview: boolean) => {
     console.log(preview);
-    const design: IRequestCreateDesign = {
-      title: data.title,
-      description: data.description,
-      is_preview: preview,
-      email: data.email,
-      west: selectedBounds.getWest(),
-      north: selectedBounds.getNorth(),
-      east: selectedBounds.getEast(),
-      south: selectedBounds.getSouth(),
-    };
-    const res = await HttpController.generateDesign(design);
+    if (selectedBounds) {
+      const design: IRequestCreateDesign = {
+        title: data.title,
+        description: data.description,
+        is_preview: preview,
+        email: data.email,
+        west: selectedBounds.getWest(),
+        north: selectedBounds.getNorth(),
+        east: selectedBounds.getEast(),
+        south: selectedBounds.getSouth(),
+      };
+      const res = await HttpController.generateDesign(design);
 
-    setDisplayProps({
-      modelUrl: `http://humboldtapparel.herokuapp.com/places/${res.design_uuid}`,
-      previewImg: res.shirt_img,
-    });
+      setDisplayProps({
+        modelUrl: `http://humboldtapparel.herokuapp.com/places/${res.design_uuid}`,
+        previewImg: res.shirt_img,
+      });
+    } else {
+      console.log('No bounds selected');
+    }
     setIsLoading(false);
   };
-
   return (
     <StyledCreatePage>
       <StyledHeader>SELECT A PLACE</StyledHeader>
       <Map selectedBounds={selectedBounds} setSelectedBounds={setSelectedBounds} />
       <InlineGrid>
         <Form onSubmit={onSubmit} setIsLoading={setIsLoading} />
+        <div></div>
         <div className="image-demo">
           <div className="frame-container">
             <svg
@@ -179,5 +162,4 @@ const Create: NextPage = () => {
     </StyledCreatePage>
   );
 };
-
 export default Create;

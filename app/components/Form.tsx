@@ -243,7 +243,7 @@ export const Form: React.FC<IFormProps> = props => {
               <input type="radio" name="choice" value="shirt"></input>
               <span id="tshirt-span">
                 <p>T-SHIRT</p>
-                <img src="/images/white-shirt.png"></img>
+                <Image src="/images/white-shirt.png" />
               </span>
             </label>
           </div>
@@ -252,7 +252,7 @@ export const Form: React.FC<IFormProps> = props => {
               <input type="radio" name="choice" value="mug"></input>
               <span id="mug-span">
                 <p>MUG</p>
-                <img src="/images/white-mug.png"></img>
+                <Image src="/images/white-mug.png" />
               </span>
             </label>
           </div>

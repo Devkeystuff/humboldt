@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-interface IStyledLinkProps {
+interface StyledLinkProps {
   isActive: boolean;
 }
 
@@ -126,71 +126,10 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledLink = styled.a<IStyledLinkProps>`
-  color: ${({ isActive, theme }) => (isActive ? theme.colors.accent : '#fff')};
-`;
+const StyledLink = styled.a``;
 
-export const Navbar: React.FC<INavbarProps> = props => {
+export const Navbar: React.FC = () => {
   const [open, setOpen] = useState(true);
-  const [mobile, setMobile] = useState(undefined);
   const router = useRouter();
-
-  useEffect(() => {
-    const updateMobile = () => {
-      setMobile(window.innerWidth <= 768 ? true : false);
-      setOpen(false);
-    };
-
-    updateMobile();
-    window.addEventListener('resize', updateMobile);
-    return () => {
-      window.removeEventListener('resize', updateMobile);
-    };
-  }, []);
-
-  const respUl = (
-    <ul
-      style={{ display: !mobile ? 'flex' : open ? 'flex' : 'none' }}
-      id={mobile ? 'mobile-buttons' : 'desktop-buttons'}
-    >
-      <li>
-        <Link href="/" passHref>
-          <StyledLink isActive={router.pathname == '/'}>Home</StyledLink>
-        </Link>
-      </li>
-      <li>
-        <Link href="/create" passHref>
-          <StyledLink isActive={router.pathname == '/create'}>Create</StyledLink>
-        </Link>
-      </li>
-      <li>
-        <Link href="/places" passHref>
-          <StyledLink isActive={router.pathname == '/places'}>Places</StyledLink>
-        </Link>
-      </li>
-      <li>
-        <Link href="/about" passHref>
-          <StyledLink isActive={router.pathname == '/about'}>About</StyledLink>
-        </Link>
-      </li>
-    </ul>
-  );
-
-  return (
-    <StyledNav>
-      <div className="grid-el" id="logo-container">
-        <Link href="/" passHref>
-          <h1 id="logo">humboldt.</h1>
-        </Link>
-      </div>
-      <div className="grid-el" id="hamburger-container">
-        <div onClick={() => setOpen(!open)} className="hamburger">
-          <div className="bar 1"></div>
-          <div className="bar 2"></div>
-          <div className="bar 3"></div>
-        </div>
-      </div>
-      {respUl}
-    </StyledNav>
-  );
+  return <nav></nav>;
 };

@@ -9,10 +9,6 @@ export interface IHTTPContext {
   post: <B, T>(url: string, params: B, default_response: T) => Promise<T>;
 }
 
-const urls = {
-  test: '/test',
-};
-
 export const HttpContext = createContext<IHTTPContext>(
   new Proxy({} as IHTTPContext, {
     apply: () => {
@@ -24,7 +20,7 @@ export const HttpContext = createContext<IHTTPContext>(
   }),
 );
 
-function HttpContextProvider({ children }: Props): React.ReactElement {
+export function HttpContextProvider({ children }: Props): React.ReactElement {
   const client = axios.create({
     baseURL: process.env.NEXT_PUBLIC_HOST || 'http://localhost:8000',
   });

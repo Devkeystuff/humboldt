@@ -3,6 +3,7 @@ import { StyledHero } from '../components/styled/IndexWelcome.styled';
 import { StyledVideo } from '../components/styled/IndexVideo.styled';
 import { StyledSteps } from '../components/styled/IndexSteps.styled';
 import { Button } from '../components/styled/Button.styled';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const Home: NextPage = () => {
@@ -10,8 +11,8 @@ const Home: NextPage = () => {
     <div>
       <StyledHero>
         <div className="shirtDisplay">
-          <img src="/images/shirts-corners.png"></img>
-          <img id="shirts-on-display" src="/images/humboldt-white.png"></img>
+          <Image width={100} height={50} src="/images/shirts-corners.png" />
+          <Image width={100} height={50} id="shirts-on-display" src="/images/humboldt-white.png" />
         </div>
         <div>
           <h1>
@@ -46,19 +47,19 @@ const Home: NextPage = () => {
         <h2>IT'S JUST THAT EASY</h2>
         <div className="StepsDiv">
           <div>
-            <img src="/images/GreenFrame.png"></img>
+            <Image width={100} height={50} src="/images/GreenFrame.png" />
             <p>SELECT</p>
             <p className="steps-tutorial">Select a place you would like to display on your merch</p>
           </div>
           <div>
-            <img src="/images/paint-brush.png"></img>
+            <Image width={100} height={50} src="/images/paint-brush.png" />
             <p>CUSTOMIZE</p>
             <p className="steps-tutorial">
               Uniquely customize merch to your own liking and write a description about the place
             </p>
           </div>
           <div>
-            <img src="/images/credit-card.png"></img>
+            <Image width={100} height={50} src="/images/credit-card.png" />
             <p>ORDER</p>
             <p className="steps-tutorial">Finalize the process by filling in the necessary payment information</p>
           </div>

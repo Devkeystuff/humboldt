@@ -4,5 +4,6 @@
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "python.linting.banditEnabled": false,
-  "python.linting.pydocstyleEnabled": false
+  "python.linting.pydocstyleEnabled": false,
+  "editor.formatOnSave": true
 }

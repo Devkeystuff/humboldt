@@ -36,12 +36,12 @@ export const LayerAreaSelect: React.FC<IAreaSelectProps> = (props: IAreaSelectPr
   useEffect(() => {
     if (isSelected) setIsSelected(false);
     const newBounds = circleRef.current?.getBounds();
-    const width = newBounds.getNorthWest().lng - newBounds.getSouthEast().lng;
-    const actualBounds = new LatLngBounds(
-      new LatLng(center.lat - width / 2, center.lng - width / 2),
-      new LatLng(center.lat + width / 2, center.lng + width / 2),
-    );
     if (newBounds) {
+      const width = newBounds.getNorthWest().lng - newBounds.getSouthEast().lng;
+      const actualBounds = new LatLngBounds(
+        new LatLng(center.lat - width / 2, center.lng - width / 2),
+        new LatLng(center.lat + width / 2, center.lng + width / 2),
+      );
       setBounds(newBounds);
       onNewBounds(actualBounds);
     }

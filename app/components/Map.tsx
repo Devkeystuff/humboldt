@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { MapContainer, Polyline, TileLayer } from 'react-leaflet';
+import React, { useState } from 'react';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import { geolocated, GeolocatedProps } from 'react-geolocated';
 import { LayerAreaSelect } from './LayerAreaSelect';
-import { LatLng, LatLngBounds, LatLngExpression } from 'leaflet';
+import { LatLng, LatLngBounds } from 'leaflet';
 import { Button } from './styled/Button.styled';
 
-interface IMapProps {
+export interface Props {
   setSelectedBounds: (bounds: LatLngBounds) => void;
-  selectedBounds: LatLngBounds;
+  selectedBounds: LatLngBounds | null;
 }
 
-const Map: React.FC<IMapProps & GeolocatedProps> = props => {
+const Map: React.FC<Props & GeolocatedProps> = props => {
   const [bounds, setBounds] = useState<LatLngBounds>(new LatLngBounds(new LatLng(0, 0), new LatLng(0, 0)));
 
   return !props.isGeolocationAvailable ? (
