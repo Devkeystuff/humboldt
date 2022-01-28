@@ -103,3 +103,13 @@ class ControllerDatabase:
         except Exception as e:
             LoggingUtils.log_exception(e)
         return design
+
+    @staticmethod
+    def test_select() -> None:
+        try:
+            with DbCursor() as cursor:
+                cursor.execute(f"SELECT * FROM humboldt")
+                row = cursor.fetchone()
+                print(row)
+        except Exception as e:
+            LoggingUtils.log_exception(e)
