@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { AppProps } from 'next/app';
 import { Layout } from '../components/Layout';
 import { HeadFilled } from '../components/Head';
+import { Navbar } from 'components/Navbar';
 
 const theme = {
   colors: {

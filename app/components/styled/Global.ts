@@ -43,6 +43,12 @@ const GlobalStyles = createGlobalStyle`
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  @media screen and (max-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
 `;
 
 export default GlobalStyles;

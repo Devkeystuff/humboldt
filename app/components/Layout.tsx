@@ -1,43 +1,29 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { Navbar } from './Navbar';
 import styled from 'styled-components';
+import Scrollbar from 'smooth-scrollbar';
 
-type ILayoutProps = {
+interface LayoutProps {
   children?: ReactNode;
-};
+}
 
 const StyledLayout = styled.div`
-  overflow: hidden;
   height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr;
-
-  main {
-    overflow-y: scroll;
-    padding: 0 10vw;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    background: url('/images/ellipse2.png');
-    background-repeat: no-repeat;
-    background-position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-size: 100vw;
-    pointer-events: none;
-    z-index: -1;
-  }
 `;
 
-export const Layout: React.FC<ILayoutProps> = props => {
+export const Layout: React.FC<LayoutProps> = props => {
+  const layoutRef = useRef(null);
+
+  useEffect(() => {
+    if (layoutRef.current) {
+      Scrollbar.init(layoutRef.current);
+    }
+  }, []);
+
   return (
-    <StyledLayout>
+    <StyledLayout ref={layoutRef}>
       <Navbar />
-      <main>{props.children}</main>
+      <main style={{ height: '200vh' }}>{props.children}</main>
     </StyledLayout>
   );
 };
