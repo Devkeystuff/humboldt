@@ -1,13 +1,23 @@
 {
   "name": "humboldt",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/Devkeystuff/humboldt.git",
-  "author": "Ronalds Palacis <ronalds.palacis@outlook.com>",
   "license": "MIT",
+  "author": "Ronalds Palacis <ronalds.palacis@outlook.com>",
+  "main": "index.js",
   "scripts": {
     "format": "eslint --fix **/*.{js,jsx,ts,tsx}",
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "eslint --fix",
+    "**/*.py": "black",
+    "package.json": "sort-package-json"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@commitlint/cli": "^16.0.2",
@@ -24,17 +34,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.7",
+    "lint-staged": "^12.3.2",
     "prettier": "^2.5.1",
     "sort-package-json": "^1.53.1",
     "typescript": "^4.5.4"
   },
   "devDependencies": {
     "cz-conventional-changelog": "3.3.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
