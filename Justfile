@@ -1,14 +1,14 @@
-# Comment out this line if you're using Linux or MacOS
-set shell := ["cmd.exe", "/c"]
-
 setup:
 	yarn install
 	cd app && yarn install
-	npm i commitizen -g
-	cd api && python -m venv env
+	sudo apt install libpq-dev
+	cd api && python3 -m venv env
+	cd api && env/bin/activate && pip install -r requirements.txt
+	cp .vscode/settings.json.default .vscode/settings.json
 
 dev:
 	docker-compose up -d
+	sh openapi-ts
 	cd app && yarn dev
 
 stop:
