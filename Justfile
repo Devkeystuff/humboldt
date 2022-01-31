@@ -1,8 +1,10 @@
+exec := if os() == "macos" {"sh"} else {""}
+
 setup:
 	yarn install
 	cd app && yarn install
 	cd api && python3 -m venv env
-	cd api && env/bin/activate && pip install -r requirements.txt
+	cd api && {{exec}} env/bin/activate && pip install -r requirements.txt
 	cp .vscode/settings.json.default .vscode/settings.json
 
 dev:
