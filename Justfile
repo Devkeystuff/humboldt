@@ -1,7 +1,6 @@
 setup:
 	yarn install
 	cd app && yarn install
-	sudo apt install libpq-dev
 	cd api && python3 -m venv env
 	cd api && env/bin/activate && pip install -r requirements.txt
 	cp .vscode/settings.json.default .vscode/settings.json
