@@ -57,12 +57,6 @@ For running automated scripts that make the development process easier
 
     cargo install just
 
-#### [Postgres](https://www.postgresql.org) dev
-
-    sudo apt install libpq-dev
-
-For using `psycopg2` to make operations in database
-
 ### [Docker](https://www.docker.com/get-started)
 
 1.  Get Docker Desktop and during installation, make sure to check this field
