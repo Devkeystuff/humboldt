@@ -4,6 +4,8 @@
 
 # Humboldt
 
+Geographically unique merch - create your own design from components generated using your location's geospatial data.
+
 ## Clone
 
     git clone https://github.com/Devkeystuff/humboldt.git
