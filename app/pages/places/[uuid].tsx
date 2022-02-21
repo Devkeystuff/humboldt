@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import Terrain from '../../components/Terrain';
+import Terrain from '../../components/Terrain/Terrain.component';
 import HttpController from '../../controllers/HttpController';
 import IResponseGetDesign from '../../types/ResponseGetDesign.type';
 import { StyledDesc } from '../../components/styled/PlaceDescription.styled';

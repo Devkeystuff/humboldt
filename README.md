@@ -4,6 +4,10 @@
 
 # Humboldt
 
+Geographically unique merch - create your own design from components generated using your location's geospatial data.
+
+⚠️ WARNING: This project is still in development, you will see big changes time to time.
+
 ## Clone
 
     git clone https://github.com/Devkeystuff/humboldt.git
@@ -56,12 +60,6 @@ For managing packages, but in our case we just want Just
 For running automated scripts that make the development process easier
 
     cargo install just
-
-#### [Postgres](https://www.postgresql.org) dev
-
-    sudo apt install libpq-dev
-
-For using `psycopg2` to make operations in database
 
 ### [Docker](https://www.docker.com/get-started)
 
