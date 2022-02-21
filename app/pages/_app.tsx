@@ -2,8 +2,8 @@ import GlobalStyles from '../components/styled/Global';
 import '../styles/globals.scss';
 import { ThemeProvider } from 'styled-components';
 import { AppProps } from 'next/app';
-import { Layout } from '../components/Layout';
-import { HeadFilled } from '../components/Head';
+import { Layout } from 'containers';
+import { Head } from 'components';
 
 const theme = {
   colors: {
@@ -17,7 +17,7 @@ const theme = {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <HeadFilled />
+      <Head />
       <Layout>
         <Component {...pageProps} />
       </Layout>

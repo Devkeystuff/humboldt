@@ -13,7 +13,7 @@ services:
       - media:/usr/src/app/media
       - static:/usr/src/app/static
     env_file:
-      - ./.env.local
+      - ./.env.dev
     depends_on:
       - redis
       - db
@@ -30,7 +30,7 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - ./.env.local
+      - ./.env.dev
     volumes:
       - postgres_data:/var/lib/postgresql/data
   nginx:
