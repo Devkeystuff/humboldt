@@ -2,9 +2,9 @@
 classDiagram
     class User {
         +int userId
-        +int sessionId
         +int userDesignId
         +int userGeospatialInfoId
+        +string email
         +string username
         +string profilePictureUrl
     }
@@ -31,12 +31,13 @@ classDiagram
         +int orderId
         +int userId
         +Status status
-        +string uuid
+        +string orderUuid
     }
 
     class OrderDetails {
         +int orderDetailsId
         +int orderId
+        +int productId
         +string productName
         +int deliveryCost
         +int itemCost
@@ -55,6 +56,7 @@ classDiagram
         +int productId
         +string productName
         +string productDescription
+        +int price
     }
 
     User "1" *-- "0 ..*" Order
@@ -63,6 +65,6 @@ classDiagram
     Order "1" *-- "1" OrderDetails
     Order "1" o-- "1" OrderStatus
 
-    Product -- Order
+    Product -- OrderDetails
 
 ```
