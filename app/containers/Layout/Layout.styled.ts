@@ -5,12 +5,10 @@ export const StyledLayout = styled.div`
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
-
   main {
     overflow-y: scroll;
     padding: 0 10vw;
   }
-
   &::before {
     content: '';
     position: absolute;

@@ -3,7 +3,7 @@ import uuid
 from PIL import Image
 import PIL
 from fastapi import UploadFile
-from modules.generate_utils import ImageGenerator
+from utils.generate_utils import ImageGenerator
 from modules.consts import (
     HOST,
     PATH_3D_WORLD,

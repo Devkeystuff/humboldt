@@ -8,11 +8,12 @@ load_dotenv()
 class DbCursor(object):
     def __init__(self):
         super().__init__()
+        print(os.getenv("POSTGRES_PASSWORD"))
         self.conn = psycopg2.connect(
-            f'dbname={os.getenv("DB_DATABASE")} '
-            f'user={os.getenv("DB_USER")} '
-            f'host={os.getenv("DB_HOST")} '
-            f'password={os.getenv("DB_PASS")} '
+            f'dbname={os.getenv("POSTGRES_DB")} '
+            f'user={os.getenv("POSTGRES_USER")} '
+            f"host=humboldt-dev-db "
+            f'password={os.getenv("POSTGRES_PASSWORD")} '
         )
         self.cursor = None
 

@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint **/*.{js,jsx,ts,tsx}"
+    "dev": "next dev",
+    "lint": "eslint **/*.{js,jsx,ts,tsx}",
+    "start": "next start"
   },
   "dependencies": {
     "@react-three/drei": "^7.14.2",
     "@react-three/fiber": "^7.0.9",
+    "@stripe/react-stripe-js": "^1.7.0",
+    "@stripe/stripe-js": "^1.22.0",
     "@types/node": "^16.10.4",
     "@types/styled-components": "^5.1.20",
     "axios": "^0.23.0",
@@ -24,6 +26,9 @@
     "react-geolocated": "^3.2.0",
     "react-hook-form": "^7.17.4",
     "react-leaflet": "^3.2.1",
+    "react-spinners": "^0.11.0",
+    "smooth-scrollbar": "^8.7.4",
+    "stripe": "^8.198.0",
     "styled-components": "^5.3.3",
     "three": "^0.133.1"
   },

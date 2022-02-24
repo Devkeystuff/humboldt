@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
 import { Button } from '../components/styled/Button.styled';
 import * as THREE from 'three';
-import { OrbitControls, useGLTF, useTexture } from '@react-three/drei';
-import { Canvas, Node, useLoader } from '@react-three/fiber';
+import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useRef } from 'react';
 
 function Tshirt({ ...props }) {
   const group = useRef();
