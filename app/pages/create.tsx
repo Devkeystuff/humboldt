@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import styled from 'styled-components';
 import React, { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Form, IFormValues } from '../components/Form';
+import { Form, IFormValues } from '../components/Form/Form.component';
 import { InlineGrid } from '../components/styled/InlineGrid.styled';
 import HttpController from '../controllers/HttpController';
 import IRequestCreateDesign from '../types/RequestCreateDesign.type';
@@ -86,7 +86,7 @@ const Create: NextPage = () => {
 
   const Map = useMemo(
     () =>
-      dynamic(() => import('../components/Map'), {
+      dynamic(() => import('../components/Map/Map.component'), {
         ssr: false,
         loading: () => <p>Map is loading</p>,
       }),
