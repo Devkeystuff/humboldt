@@ -30,6 +30,7 @@
     "smooth-scrollbar": "^8.7.4",
     "stripe": "^8.198.0",
     "styled-components": "^5.3.3",
+    "swr": "^1.2.2",
     "three": "^0.133.1"
   },
   "devDependencies": {

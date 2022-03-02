@@ -2,10 +2,9 @@
 classDiagram
     class User {
         +int userId
-        +int userDesignId
-        +int userGeospatialInfoId
         +string email
         +string username
+        +string passwordHash
         +string profilePictureUrl
     }
 

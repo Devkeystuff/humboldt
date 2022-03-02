@@ -7,11 +7,18 @@ export interface paths {
   '/test': {
     post: operations['test_test_post'];
   };
-  '/generate_design': {
-    post: operations['generate_design_generate_design_post'];
+  '/design': {
+    get: operations['get_design_design_get'];
+    post: operations['generate_design_design_post'];
   };
-  '/get_design': {
-    post: operations['get_design_get_design_post'];
+  '/user/register': {
+    post: operations['register_user_user_register_post'];
+  };
+  '/user/login': {
+    post: operations['login_user_user_login_post'];
+  };
+  '/create-payment-intent': {
+    post: operations['create_checkout_session_create_payment_intent_post'];
   };
 }
 
@@ -76,6 +83,41 @@ export interface components {
       /** Error Desc */
       error_desc?: string;
     };
+    /** ResponseLoginUser */
+    ResponseLoginUser: {
+      /** User Id */
+      user_id?: string;
+      /** Access Token */
+      access_token?: string;
+      /** Is Success */
+      is_success?: boolean;
+      /** Error Code */
+      error_code?: number;
+      /** Error Desc */
+      error_desc?: string;
+    };
+    /** ResponsePaymentIntent */
+    ResponsePaymentIntent: {
+      /** Client Secret */
+      client_secret?: string;
+      /** Is Success */
+      is_success?: boolean;
+      /** Error Code */
+      error_code?: number;
+      /** Error Message */
+      error_message?: string;
+    };
+    /** ResponseRegisterUser */
+    ResponseRegisterUser: {
+      /** User Id */
+      user_id?: string;
+      /** Is Success */
+      is_success?: boolean;
+      /** Error Code */
+      error_code?: number;
+      /** Error Desc */
+      error_desc?: string;
+    };
     /** ValidationError */
     ValidationError: {
       /** Location */
@@ -99,7 +141,29 @@ export interface operations {
       };
     };
   };
-  generate_design_generate_design_post: {
+  get_design_design_get: {
+    parameters: {
+      query: {
+        api_key?: string;
+        design_uuid?: string;
+      };
+    };
+    responses: {
+      /** Successful Response */
+      200: {
+        content: {
+          'application/json': components['schemas']['ResponseGetDesign'];
+        };
+      };
+      /** Validation Error */
+      422: {
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  generate_design_design_post: {
     parameters: {
       query: {
         api_key: string;
@@ -127,18 +191,19 @@ export interface operations {
       };
     };
   };
-  get_design_get_design_post: {
+  register_user_user_register_post: {
     parameters: {
       query: {
-        api_key: string;
-        design_uuid: string;
+        username: string;
+        email: string;
+        password: string;
       };
     };
     responses: {
       /** Successful Response */
       200: {
         content: {
-          'application/json': components['schemas']['ResponseGetDesign'];
+          'application/json': components['schemas']['ResponseRegisterUser'];
         };
       };
       /** Validation Error */
@@ -149,6 +214,38 @@ export interface operations {
       };
     };
   };
+  login_user_user_login_post: {
+    parameters: {
+      query: {
+        email: string;
+        password: string;
+      };
+    };
+    responses: {
+      /** Successful Response */
+      200: {
+        content: {
+          'application/json': components['schemas']['ResponseLoginUser'];
+        };
+      };
+      /** Validation Error */
+      422: {
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  create_checkout_session_create_payment_intent_post: {
+    responses: {
+      /** Successful Response */
+      200: {
+        content: {
+          'application/json': components['schemas']['ResponsePaymentIntent'];
+        };
+      };
+    };
+  };
 }
 
-// export interface external { }
+export interface external {}

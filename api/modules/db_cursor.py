@@ -8,7 +8,6 @@ load_dotenv()
 class DbCursor(object):
     def __init__(self):
         super().__init__()
-        print(os.getenv("POSTGRES_PASSWORD"))
         self.conn = psycopg2.connect(
             f'dbname={os.getenv("POSTGRES_DB")} '
             f'user={os.getenv("POSTGRES_USER")} '

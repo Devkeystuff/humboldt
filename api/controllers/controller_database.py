@@ -2,6 +2,7 @@ from dacite import from_dict, Config
 
 from modules.logging_utils import LoggingUtils
 from modules.db_cursor import DbCursor
+from models.db.db_user import DbUser
 
 from models.db.db_design import DbDesign
 from models.db.db_client import DbClient
@@ -103,6 +104,24 @@ class ControllerDatabase:
         except Exception as e:
             LoggingUtils.log_exception(e)
         return design
+
+    @staticmethod
+    def get_user_by_email(email: str) -> DbUser:
+        with DbCursor() as cursor:
+            cursor.execute(
+                f"""SELECT * FROM users WHERE email=%(email)s AND NOT is_deleted LIMIT 1"""
+            )
+            row = cursor.fetchone()
+            print(row)
+
+    @staticmethod
+    def get_user_by_email_and_password(email: str, password: str) -> DbUser:
+        # with DbCursor() as cursor:
+        #     cursor.execute(
+        #         f"""SELECT * FROM users WHERE email=%(email) AND password_hash=%(password)s""",
+        #         {"email": email, "password": password},
+        #     )
+        return DbUser(email="test@test.com", password_hash="test")
 
     @staticmethod
     def test_select() -> None:
