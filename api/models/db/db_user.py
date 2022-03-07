@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 from dataclasses_json import dataclass_json
 
 
@@ -7,6 +8,7 @@ from dataclasses_json import dataclass_json
 class DbUser:
     user_id: int = 0
     username: str = ""
-    email: str = ""
+    email: Optional[str] = None
     password_hash: str = ""
     profile_picture_url: str = ""
+    disabled: Optional[bool] = None
