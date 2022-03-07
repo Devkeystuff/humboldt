@@ -27,7 +27,8 @@ class ControllerUsers:
 
     @staticmethod
     def login_user(request: RequestLoginUser) -> ResponseLoginUser:
-        # Authenticate user
+        # Authorize user
+
         response = ResponseLoginUser()
         user = ControllerDatabase.get_user_by_email_and_password(
             email=request.email, password=request.password

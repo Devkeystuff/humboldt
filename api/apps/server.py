@@ -4,9 +4,7 @@ from fastapi.staticfiles import StaticFiles
 import stripe
 from starlette.responses import Response
 from models.requests.request_generate_design import RequestGenerateDesign
-from models.requests.response_generate_design import (
-    ResponseGenerateDesign,
-)
+from models.requests.response_generate_design import ResponseGenerateDesign
 from models.requests.request_get_design import RequestGetDesign
 from models.requests.response_get_design import ResponseGetDesign
 from models.requests.request_payment_intent import RequestPaymentIntent
@@ -15,6 +13,10 @@ from models.requests.response_payment_intent import ResponsePaymentIntent
 from controllers.controller_requests import ControllerRequests
 from controllers.controller_database import ControllerDatabase
 
+from modules.auth_middleware import verify_authorization_header
+from fastapi_auth_middleware import AuthMiddleware
+
+
 from modules.logging_utils import LoggingUtils
 
 from utils.checkout_utils import CheckoutUtils
@@ -22,6 +24,10 @@ from utils.checkout_utils import CheckoutUtils
 server = FastAPI()
 
 server.mount("/static", StaticFiles(directory="static"), name="static")
+
+server.add_middleware(
+    AuthMiddleware, verify_authorization_header=verify_authorization_header
+)
 
 
 stripe.api_key = "sk_test_51KKSBJJHth7Mq4BApDC8xrMoUrcI4RcTrJphP5GjoGWVre0CYjj8jazXiY0Lh1m6fSgjeTBn7EzIhxs4XPj8blsS0049f68n0K"
@@ -62,7 +68,7 @@ async def generate_design(
         )
 
         response = await ControllerRequests.generate_design(
-            request=request_generate_design,
+            request=request_generate_design
         )
 
     except Exception as e:

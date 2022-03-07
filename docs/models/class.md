@@ -8,15 +8,8 @@ classDiagram
         +string profilePictureUrl
     }
 
-    class Session {
-        +int sessionId
-        +int userId
-        +string authHash
-        +string lastSeen
-    }
-
     class OrderGeospatialInfo {
-        +int userGeospatialInfoId
+        +int orderGeospatialInfoId
         +int orderId
         +string placeName
         +string placeDescription
@@ -39,7 +32,7 @@ classDiagram
         +int productId
         +string productName
         +int deliveryCost
-        +int itemCost
+        +int productCost
         +int orderSubtotal
     }
 
@@ -51,6 +44,13 @@ classDiagram
         SUCCESS
     }
 
+    class DesignType {
+        <<enumeration>>
+        MAP
+        QR
+        LINES
+    }
+
     class Product {
         +int productId
         +string productName
@@ -58,11 +58,17 @@ classDiagram
         +int price
     }
 
+    class Design {
+        +int designId
+        +DesignType designType
+        +string imageUrl
+    }
+
     User "1" *-- "0 ..*" Order
     Order "1" *-- "1" OrderGeospatialInfo
-    User "1" *-- "1" Session
     Order "1" *-- "1" OrderDetails
     Order "1" o-- "1" OrderStatus
+    DesignType o-- Design
 
     Product -- OrderDetails
 

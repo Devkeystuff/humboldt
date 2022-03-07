@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  api:
+  fastapi:
     build: ./api
     container_name: humboldt-api
     restart: always
@@ -16,7 +16,7 @@ services:
       - ./.env.dev
     depends_on:
       - redis
-      - db
+      - postgres
   redis:
     image: redis:6.2.6-alpine
     container_name: humboldt-cache
@@ -24,7 +24,7 @@ services:
       - redis_data:/var/lib/redis/data
     ports:
       - 6379:6379
-  db:
+  postgres:
     image: postgres:14.1-alpine
     container_name: humboldt-dev-db
     ports:
@@ -40,11 +40,10 @@ services:
       - media:/src/app/media
       - static:/src/app/static
     ports:
-      - 8080:80
+      - 80:80
     restart: always
     depends_on:
-      - api
-      - redis
+      - fastapi
 
 volumes:
   postgres_data:

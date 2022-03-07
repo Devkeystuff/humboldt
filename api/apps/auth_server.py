@@ -1,4 +1,3 @@
-from modules.auth_middleware import verify_authorization_header
 from models.requests.request_register_user import RequestRegisterUser
 from models.requests.response_register_user import ResponseRegisterUser
 from models.requests.request_login_user import RequestLoginUser
@@ -8,14 +7,8 @@ from controllers.controller_users import ControllerUsers
 
 from fastapi import FastAPI, Query, HTTPException
 
-from fastapi_auth_middleware import AuthMiddleware
-
 
 auth_server = FastAPI()
-
-auth_server.add_middleware(
-    AuthMiddleware, verify_authorization_header=verify_authorization_header
-)
 
 
 @auth_server.post("/user/register", response_model=ResponseRegisterUser)
