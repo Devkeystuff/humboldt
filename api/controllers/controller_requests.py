@@ -22,9 +22,7 @@ from modules.logging_utils import LoggingUtils
 from controllers.controller_database import ControllerDatabase
 
 from models.requests.request_generate_design import RequestGenerateDesign
-from models.requests.response_generate_design import (
-    ResponseGenerateDesign,
-)
+from models.requests.response_generate_design import ResponseGenerateDesign
 from models.requests.request_get_design import RequestGetDesign
 from models.requests.response_get_design import ResponseGetDesign
 

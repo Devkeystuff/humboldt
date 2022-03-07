@@ -136,9 +136,7 @@ class ImageGenerator:
         result = None
         try:
             result = DesignBottomText()
-            f = open(
-                f"{PATH_PUBLIC}/edition/edition.json",
-            )
+            f = open(f"{PATH_PUBLIC}/edition/edition.json")
             data = json.load(f)
             result.title = data["title"]
             result.description = data["description"]
