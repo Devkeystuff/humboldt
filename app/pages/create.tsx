@@ -3,10 +3,9 @@ import type { NextPage } from 'next';
 import styled from 'styled-components';
 import React, { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Form, IFormValues } from '../components/Form/Form.component';
+import { Form } from '../components';
 import { InlineGrid } from '../components/styled/InlineGrid.styled';
 import HttpController from '../controllers/HttpController';
-import IRequestCreateDesign from '../types/RequestCreateDesign.type';
 import { Button } from '../components/styled/Button.styled';
 import { latLng, LatLngBounds, latLngBounds } from 'leaflet';
 
@@ -97,10 +96,10 @@ const Create: NextPage = () => {
   const [displayProps, setDisplayProps] = useState<DisplayProps>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const onSubmit = async (data: IFormValues, preview: boolean) => {
+  const onSubmit = async (data: any, preview: boolean) => {
     console.log(preview);
     if (selectedBounds) {
-      const design: IRequestCreateDesign = {
+      const design = {
         title: data.title,
         description: data.description,
         is_preview: preview,
@@ -127,7 +126,6 @@ const Create: NextPage = () => {
       <Map selectedBounds={selectedBounds} setSelectedBounds={setSelectedBounds} />
       <InlineGrid>
         <Form onSubmit={onSubmit} setIsLoading={setIsLoading} />
-        <div></div>
         <div className="image-demo">
           <div className="frame-container">
             <svg

@@ -4,7 +4,6 @@ from typing import Optional
 from fastapi import FastAPI, Query, Depends, HTTPException, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.security import OAuth2PasswordRequestForm
-from pydantic import BaseModel
 
 from models.requests.request_generate_design import RequestGenerateDesign
 from models.requests.response_generate_design import ResponseGenerateDesign
@@ -55,7 +54,7 @@ async def generate_design(
 
     except Exception as e:
         LoggingUtils.log_exception(e)
-    return Response(content=response.to_json(), media_type="application/json")
+    return response
 
 
 @api.get("/design", response_model=ResponseGetDesign)

@@ -26,6 +26,7 @@
     "react-geolocated": "^3.2.0",
     "react-hook-form": "^7.17.4",
     "react-leaflet": "^3.2.1",
+    "react-query": "^3.34.16",
     "react-spinners": "^0.11.0",
     "smooth-scrollbar": "^8.7.4",
     "stripe": "^8.198.0",

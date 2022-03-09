@@ -10,6 +10,7 @@ setup:
 dev:
 	docker-compose up -d
 	sh openapi-ts
+	yarn
 	cd app && yarn dev
 
 stop:

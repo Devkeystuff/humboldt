@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         <OrbitControls autoRotate autoRotateSpeed={0.5} rotateSpeed={0.4} />
       </Canvas>
       <div className="shirtDisplay">
-        <Image width={100} height={50} id="shirts-on-display" src="/images/humboldt-white.png" />
+        {/* <Image width={100} height={50} id="shirts-on-display" src="/images/humboldt-white.png" /> */}
       </div>
       <div>
         <h1>
@@ -67,19 +67,18 @@ const Home: NextPage = () => {
       <h2>IT'S JUST THAT EASY</h2>
       <div className="StepsDiv">
         <div>
-          <Image width={100} height={50} src="/images/GreenFrame.png" />
+          {/* <Image width={100} height={50} src="/images/GreenFrame.png" /> */}
           <p>SELECT</p>
           <p className="steps-tutorial">Select a place you would like to display on your merch</p>
         </div>
         <div>
-          <Image width={100} height={50} src="/images/paint-brush.png" />
+          {/* <Image width={100} height={50} src="/images/paint-brush.png" /> */}
           <p>CUSTOMIZE</p>
           <p className="steps-tutorial">
             Uniquely customize merch to your own liking and write a description about the place
           </p>
         </div>
         <div>
-          <Image width={100} height={50} src="/images/credit-card.png" />
           <p>ORDER</p>
           <p className="steps-tutorial">Finalize the process by filling in the necessary payment information</p>
         </div>
