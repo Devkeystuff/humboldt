@@ -12,7 +12,6 @@ export default function CheckoutForm() {
 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     try {
@@ -52,8 +51,6 @@ export default function CheckoutForm() {
       return;
     }
 
-    setIsLoading(true);
-
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -68,8 +65,6 @@ export default function CheckoutForm() {
     } else {
       setMessage('An unexpected error occured.');
     }
-
-    setIsLoading(false);
   };
 
   return (

@@ -8,10 +8,9 @@ type ILayoutProps = {
 
 const Layout: React.FC<ILayoutProps> = props => {
   return (
-    <StyledLayout>
-      <Navbar />
+    <div>
       <main>{props.children}</main>
-    </StyledLayout>
+    </div>
   );
 };
 

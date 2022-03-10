@@ -8,8 +8,6 @@ interface StyledLinkProps {
   isActive: boolean;
 }
 
-const StyledLink = styled.a``;
-
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
